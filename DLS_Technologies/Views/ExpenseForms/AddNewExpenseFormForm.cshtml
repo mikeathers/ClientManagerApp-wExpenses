@@ -1,0 +1,31 @@
+﻿@model DLS_Technologies.ViewModels.ExpenseFormViewModel
+
+@using (Html.BeginForm("SaveExpenseForm", "ExpenseForms"))
+{
+
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+
+
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.DateAdded)
+
+    <button id="showNewExpenseFormBtn" class="btn btn-primary">Add New Expense Form</button>
+    <br /><br />
+
+
+    <div hidden="hidden" id="addNewExpenseFormBtn" class="form-group">
+        @Html.LabelFor(m => m.Name)
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="submit">Add</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+}

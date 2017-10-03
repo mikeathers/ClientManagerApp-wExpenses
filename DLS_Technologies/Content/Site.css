@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    height: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -20,5 +21,95 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width:280px;
 }
+
+
+.content {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+
+.body {
+    flex: 1;
+}
+.footer {
+   bottom: 0;
+}
+
+
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+   display:none;
+}
+    
+
+.validation-failed
+{
+
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48 !important;
+    color: red !important;
+}
+
+.field-validation-valid {
+    display: none !important;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48 !important;
+    border: 1px solid red !important;
+}
+
+
+select.input-validation-error {
+    border: 1px solid #b94a48 !important;
+    border: 1px solid red !important;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none !important;
+}
+
+.validation-summary-errors {
+    color: #b94a48 !important;
+    color: red !important;
+}
+
+.validation-summary-valid {
+    display: none !important;
+}
+
+
+
+
+
+
+.btn-row {
+    margin-bottom:5px;
+}
+.btn-row .btn {
+    width: 150px;
+    margin-left: 5px;
+}
+
+.btn-row-container {
+    margin-left:15px;
+}
+
+
+.row-form-expense {
+    width:45%;
+}
+
+.row-form-expense-other {
+    width: 55%;
+}
+

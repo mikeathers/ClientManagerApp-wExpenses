@@ -1,0 +1,22 @@
+﻿@model DLS_Technologies.ViewModels.ExpenseViewModel
+
+
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Description)
+    @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Description)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Cost)
+    @Html.TextBoxFor(m => m.Cost, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Cost)
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#PartialFormatDiv").empty();
+    })
+</script>

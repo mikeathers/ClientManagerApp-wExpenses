@@ -12,6 +12,21 @@ namespace DLS_Technologies
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            
+
+            routes.MapRoute(
+                name: "UpdateTotalCost",
+                url: "ExpenseForms/UpdateTotalCost",
+                defaults: new { controller = "ExpenseForms", action = "UpdateTotalCost",  }
+            );
+
+            routes.MapRoute(
+                name: "ShowExpenses",
+                url: "ExpenseForms/ShowExpenses/{expenseFormId}",
+                defaults: new { controller = "ExpenseForms", action = "ShowExpenses" }
+            );
+
+            
 
             routes.MapRoute(
                 name: "Default",

@@ -1,0 +1,160 @@
+﻿@model DLS_Technologies.ViewModels.ExpenseFormViewModel
+@{  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br />
+<h3>@ViewBag.Title</h3>
+@Html.ActionLink("Back", "Index", "ExpenseForms")
+<br /><br />
+@Html.ActionLink("Add New Expense", "NewExpense", "Expenses", new { expenseFormId = Model.ExpenseForm.Id }, null )
+<br /><br />
+@{
+    if (!Model.Expenses.Any())
+    {
+        <h4>No expenses have been added to this form.</h4>
+    }
+    else
+    {
+        @Html.HiddenFor(m => m.ExpenseForm.Id)
+        @Html.HiddenFor(m => m.TotalCost)
+
+        <table id="expensesTable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Expense Type</th>
+                    <th>Date</th>
+                    <th>Origin</th>
+                    <th>Destion</th>
+                    <th>Total Miles</th>
+                    <th>Cost</th>  
+                </tr>
+            </thead>
+            <tbody>
+                @{ 
+                    foreach (var expense in Model.Expenses)
+                    {
+                        
+                        <tr data-expenseform-id="@expense.ExpenseFormId" data-expense-id="@expense.Id">
+                            <td>@expense.ExpenseType.Name</td>
+                            <td>@expense.Date.Value.ToShortDateString()</td>
+                            <th>@expense.Origin</th>
+                            <th>@expense.Destination</th>
+                            <td>@expense.TotalMiles</td>
+                            <td>£@expense.Cost.Value.ToString("0.00")</td>
+                        </tr>
+                        
+                    }
+                }
+            </tbody>
+            
+        </table>
+    }
+}
+
+@section scripts 
+{
+    
+
+
+    <script>
+
+        $(document).ready(function () {
+            
+            $("#expensesTable").append('<tfoot><th></th><th></th><th></th><th></th><th></th><th></th></tfoot>');
+            $('#expensesTable').DataTable({
+                columnDefs: [
+                    { width: 100, targets: 5 },
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    { extend: 'copyHtml5', footer: true },
+                    { extend: 'excelHtml5', footer: true },
+                    { extend: 'csvHtml5', footer: true },
+                    { extend: 'pdfHtml5', footer: true }
+                ],
+                "footerCallback": function (row, data, start, end, display) {
+                    var api = this.api(), data;
+                    // Remove the formatting to get integer data for summation
+                    var intVal = function (i) {
+                        return typeof i === 'string' ?
+                            i.replace(/[\£,]/g, '') * 1 :
+                            typeof i === 'number' ? i : 0;
+                    };
+
+                    // Total over all pages
+                    totalCost = api
+                        .column(5)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                    // Total over this page
+                    pageTotal = api
+                        .column(5, { page: 'current' })
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    var totalCostResult = parseFloat(Math.round(totalCost * 100) / 100).toFixed(2); 
+
+
+                    // Total over all pages
+                    totalMiles = api
+                        .column(4)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                    // Total over this page
+                    pageTotal = api
+                        .column(4, { page: 'current' })
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                    
+
+                    // Update footer
+                    $(api.column(5).footer()).html(
+                        'Total: £' + totalCostResult
+                    );
+
+                    // Update footer
+                    $(api.column(4).footer()).html(
+                        'Total Miles: ' + totalMiles
+                    );
+
+                     
+                    var id = $("#ExpenseForm_Id").val();
+
+                    $.ajax({
+                        method: "POST",
+                        url: "@Url.Action("UpdateTotalCost", "ExpenseForms")",
+                        data: {
+                            id: id,
+                            totalCost: totalCostResult
+                        }
+                    });
+                }
+            });
+       
+     
+            
+            $("#expensesTable tbody").on("click", "tr", function () {
+                var row = $(this);
+                console.log(row.attr("data-expense-id"));
+                $.ajax({
+                    method: "GET",                    
+                    url: "/Expenses/GetExpense/" + row.attr("data-expense-id"),
+                    success: function () {
+                        window.location.href = '/Expenses/GetExpense/' + row.attr("data-expense-id")
+                    }
+                });                
+            });
+            
+
+
+        })
+    </script>
+}

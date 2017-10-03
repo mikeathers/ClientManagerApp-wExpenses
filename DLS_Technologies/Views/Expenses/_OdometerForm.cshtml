@@ -1,0 +1,71 @@
+﻿@model DLS_Technologies.ViewModels.MileageFormViewModel
+
+<div class="row">
+    <div class="form-group col-sm-4">
+        @Html.LabelFor(m => m.Origin)
+        @Html.TextBoxFor(m => m.Origin, new { @class = "form-control", @placeholder = "Enter Origin" })
+        @Html.ValidationMessageFor(m => m.Origin)
+    </div>
+
+    <div class="form-group col-sm-4">
+        @Html.LabelFor(m => m.Destination)
+        @Html.TextBoxFor(m => m.Destination, new { @class = "form-control", @placeholder = "Enter Destination" })
+        @Html.ValidationMessageFor(m => m.Destination)
+    </div>
+    <div class="col-sm-offset-4"></div>
+</div>
+<div class="row">
+    <div class="form-group col-sm-4">
+        @Html.LabelFor(m => m.OdometerStart)
+        @Html.TextBoxFor(m => m.OdometerStart, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OdometerStart)
+    </div>
+
+    <div class="form-group col-sm-4">
+        @Html.LabelFor(m => m.OdometerEnd)
+        @Html.TextBoxFor(m => m.OdometerEnd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OdometerEnd)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.TotalMiles)
+    @Html.TextBoxFor(m => m.TotalMiles, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.TotalMiles)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Cost)
+    @Html.TextBoxFor(m => m.Cost, new { @class = "form-control", @readonly = "readonly" })
+    @Html.ValidationMessageFor(m => m.Cost)
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        $("#OdometerEnd").on("focusout", () => {
+            var startOdometer = $("#OdometerStart").val();
+            var endOdometer = $("#OdometerEnd").val();
+
+            if (endOdometer != "")
+                var result = endOdometer - startOdometer;
+            else
+                result = 0;
+
+            $("#TotalMiles").val(result).on("focusout", function () {
+                var miles = $(this).val();
+                var cost = miles * .25;
+                var result = parseFloat(Math.round(cost * 100) / 100).toFixed(2);
+                $("#Cost").val(result);
+            });;
+        });
+       /* $("#TotalMiles").on("focusin", function () {
+            var originResult = $("#Origin").val();
+            var destinationResult = $("#Destination").val();
+            calculateDistance(originResult, destinationResult);
+        */
+        
+    });
+    
+</script>

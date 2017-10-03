@@ -1,0 +1,32 @@
+﻿@model DLS_Technologies.ViewModels.MileageFormViewModel
+
+
+<div id="target" class="form-group">
+    <label class="radio-inline"><input id="googleMapsRadBtn" data-radioBtn-id="1" checked="checked" type="radio" class="js-mileage-radiobtn" name="optradio" value="googleMaps">Google Maps</label>
+    <label class="radio-inline"><input id="odometerRadBtn" data-radioBtn-id="2" type="radio" class="js-mileage-radiobtn" name="optradio" value="odometer">Manual</label>
+</div>
+
+<div id="PartialFormatDiv">
+</div>
+
+<script>
+    function LoadMileageFormats(button) {
+        $.ajax({
+            method: "GET",
+            url: "/expenses/loadmileageformat/" + button.attr("data-radioBtn-id"),
+            success: function (result) {
+                $("#PartialFormatDiv").empty();
+                $("#PartialFormatDiv").html(result);
+            }
+        });
+    }
+
+    if ($("#googleMapsRadBtn").is(":checked")) {
+        LoadMileageFormats($(".js-mileage-radiobtn"));
+    }
+
+    $(".js-mileage-radiobtn").on("change", function () {
+        LoadMileageFormats($(this));
+    });
+</script>
+
