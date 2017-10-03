@@ -1,0 +1,14 @@
+Current project im working on for work.
+
+Currently expenses like mileage and parking are tracked via an expenses A4 piece of paper you keep in your car where 
+you add odometer values and total mileage or parking locations. 
+
+At the end of each month you transfer all those details to an excel spreadsheet and send it over to accounts team with any receipts. 
+
+A very tedious task, this application simplifies that task by being available via public facing web server. 
+You can add odometer values into the new expense form or use the integrated google maps API if you forgot to take note of your odometer. 
+Once an expense is added it can be updated. You can then add the origin of your journey and the current odometer reading and save that 
+expense, then once you reach your destination you can go back into the expense and add the destination and final odometer reading. 
+Using the google maps API, total mileage is calculated automatically and the cost of the jounrey is automatically calculated. 
+
+Datatables are used to view each monthly expense form and save them down as an excel spreadsheet, ready to be sent to the accounts team.
