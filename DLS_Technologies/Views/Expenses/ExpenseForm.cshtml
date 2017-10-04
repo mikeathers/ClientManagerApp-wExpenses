@@ -1,0 +1,138 @@
+﻿@model DLS_Technologies.ViewModels.ExpenseViewModel
+@{
+    ViewBag.Title = "Add New Expense";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>@ViewBag.Title - @Html.ValueFor(m => m.ExpenseForm.Name)</h2>
+<br />
+@Html.ActionLink("Back", "ShowExpenses", "ExpenseForms", new { expenseFormId = Model.ExpenseForm.Id}, null)
+<br /><br />
+
+    @using (Html.BeginForm("Save", "Expenses"))
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()  
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.ExpenseFormId)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Date)
+            @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })          
+            @Html.ValidationMessageFor(m => m.Date)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.ExpenseTypeId)
+            @Html.DropDownListFor(m => m.ExpenseTypeId, new SelectList(Model.ExpenseTypes, "Id", "Name", "1"), "Select Expense Type", new { @class = "form-control", @onChange = "LoadExpenseForms()" })
+            @Html.ValidationMessageFor(m => m.ExpenseTypeId)
+        </div>        
+
+        <div id="PartialDiv">
+        </div>
+
+        {
+            if (Model.Id == 0)
+            {
+                <button type="submit" class="btn btn-success">Add Expense</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-success">Update Expense</button>
+                <button type="submit" id="delete-btn" data-expense-id="@Model.Id" data-form-id="@Model.ExpenseFormId" class="btn btn-primary">Delete Expense</button>
+            }
+        }
+
+    }
+
+@section scripts 
+{
+
+    @Scripts.Render("~/bundles/jqueryval")    
+
+    <script>
+        function LoadExpenseForms(id) {
+
+            if ($("#Id").val() == 0) {
+                if (id == null)
+                    var id = $("#ExpenseTypeId").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/expenses/loadpartial/" + id,
+                    success: function (result) {
+                        $("#PartialFormatDiv").empty();
+                        $("#PartialDiv").empty();
+                        $("#PartialDiv").html(result);
+
+                        if (id == 1) {
+                            $.ajax({
+                                method: "GET",
+                                url: "/expenses/loadmileageformat/" + 1,
+                                success: function (result) {
+                                    $("#PartialFormatDiv").empty();
+                                    $("#PartialFormatDiv").html(result);
+                                }
+                            })
+                        }
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    type: "GET",
+                    url: "/expenses/loadeditpartial/",
+                    data: {
+                        id: $("#Id").val(),
+                        expenseType: $("#ExpenseTypeId").val()
+                    },
+                    success: function (result) {
+                        $("#PartialFormatDiv").empty();
+                        $("#PartialDiv").empty();
+                        $("#PartialDiv").html(result);
+
+                        if (id == 1) {
+                            $.ajax({
+                                method: "GET",
+                                url: "/expenses/loadmileageformat/" + 1,
+                                success: function (result) {
+                                    $("#PartialFormatDiv").empty();
+                                    $("#PartialFormatDiv").html(result);
+                                }
+                            })
+                        }
+                    }
+                });
+            }
+
+            
+        }
+
+        $(document).ready(function () {
+            LoadExpenseForms(1);       
+
+            $("#delete-btn").on("click", function (e) {
+                e.preventDefault();
+                var button = $(this);
+                var id = button.attr("data-form-id");
+                bootbox.confirm("Are you sure you want to delete this Expense?", (result) => {
+                    if (result) {
+                        $.ajax({
+                            method: "DELETE",
+                            url: "/api/expenses/" + button.attr("data-expense-id"),
+                            success: () => {
+                                console.log(id);
+                                window.location.href = "/ExpenseForms/ShowExpenses/" + id
+                            }
+                        });
+                    };
+                });
+            });
+
+        })
+                       
+    </script>
+
+
+    
+
+}

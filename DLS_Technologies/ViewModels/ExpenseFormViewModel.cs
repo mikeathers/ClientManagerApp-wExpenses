@@ -12,6 +12,7 @@ namespace DLS_Technologies.ViewModels
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public ExpenseForm ExpenseForm { get; set; }

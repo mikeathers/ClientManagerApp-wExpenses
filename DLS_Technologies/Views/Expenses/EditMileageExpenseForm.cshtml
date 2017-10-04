@@ -1,10 +1,9 @@
-﻿@model DLS_Technologies.ViewModels.ExpenseViewModel
+﻿@model DLS_Technologies.ViewModels.MileageFormViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
 <h2>@ViewBag.Title</h2>
-
 @Html.ActionLink("Back", "ShowExpenses", "ExpenseForms", new { id = Model.ExpenseFormId }, null)
 <br /><br />
 @using (Html.BeginForm("Save", "Expenses"))
@@ -19,38 +18,55 @@
         @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
         @Html.ValidationMessageFor(m => m.Date)
     </div>
-    
-      
+
+
     <div class="form-group">
         @Html.LabelFor(m => m.ExpenseTypeId)
         @Html.DropDownListFor(m => m.ExpenseTypeId, new SelectList(Model.ExpenseTypes, "Id", "Name"), new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.ExpenseTypeId)
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Description)
-        @Html.TextAreaFor(m => m.Description, new { @class="form-control" })
-        @Html.ValidationMessageFor(m => m.Description)
+    <div id="target" class="form-group">
+        <label class="radio-inline"><input id="googleMapsRadBtn" data-expense-id="@Model.Id" data-radioBtn-id="1" checked="checked" type="radio" class="js-mileage-radiobtn" name="optradio" value="googleMaps">Google Maps</label>
+        <label class="radio-inline"><input id="odometerRadBtn" data-expense-id="@Model.Id" data-radioBtn-id="2" type="radio" class="js-mileage-radiobtn" name="optradio" value="odometer">Manual</label>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Cost)
-        @Html.TextBoxFor(m => m.Cost, "{0:n2}", new { @class="form-control" })
-        @Html.ValidationMessageFor(m => m.Cost)
-
-    </div>
-
+    <div id="PartialDiv"></div>
 
     <button type="submit" class="btn btn-success">Update Expense</button>
     <button type="submit" id="delete-btn" data-expense-id="@Model.Id" data-form-id="@Model.ExpenseFormId" class="btn btn-primary">Delete Expense</button>
-
-
 }
 
 @section scripts
 {
     <script>
-        $(document).ready(function() {
+        function LoadMileageFormats(button) {
+            $.ajax({
+                async: true,
+                method: "GET",
+                url: "/Expenses/LoadEditMileageFormats/",
+                data: {
+                    id: button.attr("data-expense-id"),
+                    formatType: button.attr("data-radioBtn-id")
+                },
+                success: function (result) {
+                        $("#PartialDiv").empty();
+                        $("#PartialDiv").html(result);
+                        
+                }
+            });
+        }
+
+        if ($("#googleMapsRadBtn").is(":checked")) {
+            LoadMileageFormats($(".js-mileage-radiobtn"));
+        }
+
+        $(".js-mileage-radiobtn").on("change", function () {
+            LoadMileageFormats($(this));
+        });
+
+        $(document).ready(function () { 
+
             $("#delete-btn").on("click", function (e) {
                 e.preventDefault();
                 var button = $(this);
@@ -68,6 +84,11 @@
                     };
                 });
             });
-        })
+
+
+        });
+
+
+        
     </script>
 }

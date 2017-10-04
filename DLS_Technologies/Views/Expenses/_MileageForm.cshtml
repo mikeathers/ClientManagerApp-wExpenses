@@ -8,17 +8,34 @@
 
 <div id="PartialFormatDiv">
 </div>
-
 <script>
     function LoadMileageFormats(button) {
-        $.ajax({
-            method: "GET",
-            url: "/expenses/loadmileageformat/" + button.attr("data-radioBtn-id"),
-            success: function (result) {
-                $("#PartialFormatDiv").empty();
-                $("#PartialFormatDiv").html(result);
-            }
-        });
+
+        if ($("#Id").val() == 0) {
+            $.ajax({
+                method: "GET",
+                url: "/expenses/loadmileageformat/" + button.attr("data-radioBtn-id"),
+                success: function (result) {
+                    $("#PartialFormatDiv").empty();
+                    $("#PartialFormatDiv").html(result);
+                }
+            });
+        }
+        else {
+            $.ajax({
+                method: "GET",
+                url: "/expenses/loadeditmileageformat/",
+                data: {
+                    id: $("#Id").val(),
+                    mileageFormat: button.attr("data-radioBtn-id")
+                },
+                success: function (result) {
+                    $("#PartialFormatDiv").empty();
+                    $("#PartialFormatDiv").html(result);
+                }
+            });
+        }
+        
     }
 
     if ($("#googleMapsRadBtn").is(":checked")) {

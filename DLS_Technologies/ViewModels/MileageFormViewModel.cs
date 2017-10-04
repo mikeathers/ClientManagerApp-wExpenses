@@ -8,7 +8,7 @@ namespace DLS_Technologies.ViewModels
 {
     public class MileageFormViewModel : ExpenseViewModel
     {
-        
+        [Required]
         public string Origin { get; set; }
 
         

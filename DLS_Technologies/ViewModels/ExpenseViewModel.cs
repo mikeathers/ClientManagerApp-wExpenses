@@ -24,6 +24,8 @@ namespace DLS_Technologies.ViewModels
         [Required]
         public DateTime? Date { get; set; }
 
+        public DateTime DateTime { get; set; }
+
         [Display(Name = "Total Cost (£):")]
         [Required]
         public double? Cost { get; set; }

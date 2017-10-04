@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201709292032403_SeedUsers.Designer.cs">
       <DependentUpon>201709292032403_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710032138494_AddDateTimeToExpense.cs" />
+    <Compile Include="Migrations\201710032138494_AddDateTimeToExpense.Designer.cs">
+      <DependentUpon>201710032138494_AddDateTimeToExpense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserAccounts\AccountViewModels.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
@@ -681,6 +685,7 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <None Include="Scripts\jquery-1.12.4-vsdoc.js" />
+    <Content Include="Scripts\GoogleMapsAPI\GoogleMapsAPI.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -732,13 +737,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ExpenseForms\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Expenses\NewExpenseForm.cshtml" />
+    <Content Include="Views\Expenses\ExpenseForm.cshtml" />
     <Content Include="Views\Expenses\_MileageForm.cshtml" />
     <Content Include="Views\Expenses\_OtherExpenseForm.cshtml" />
     <Content Include="Views\ExpenseForms\AddNewExpenseFormForm.cshtml" />
     <Content Include="Views\ExpenseForms\ShowExpensesForm.cshtml" />
-    <Content Include="Views\Expenses\ViewExpenseForm.cshtml" />
-    <Content Include="Views\Expenses\ViewMileageExpenseForm.cshtml" />
     <Content Include="Views\Expenses\_OdometerForm.cshtml" />
     <Content Include="Views\Expenses\_GoogleMapsForm.cshtml" />
   </ItemGroup>
@@ -774,6 +777,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709292032403_SeedUsers.resx">
       <DependentUpon>201709292032403_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710032138494_AddDateTimeToExpense.resx">
+      <DependentUpon>201710032138494_AddDateTimeToExpense.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

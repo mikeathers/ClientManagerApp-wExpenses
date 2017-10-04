@@ -1,5 +1,8 @@
 ﻿@model DLS_Technologies.ViewModels.MileageFormViewModel
 
+
+@Html.HiddenFor(m => m.DateTime)
+
 <div class="row">
     <div class="form-group col-sm-4">
         @Html.LabelFor(m => m.Origin)
@@ -40,7 +43,7 @@
     @Html.ValidationMessageFor(m => m.Cost)
 </div>
 
-
+@Scripts.Render("~/bundles/jqueryval")
 <script>
 
     $(document).ready(function () {

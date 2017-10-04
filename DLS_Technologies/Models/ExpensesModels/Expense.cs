@@ -17,7 +17,9 @@ namespace DLS_Technologies.Models.ExpensesModels
 
         [Required]
         public DateTime? Date { get; set; }
-        
+
+        public DateTime DateTime { get; set; }
+
         public double? Cost { get; set; }
         
         public Customer Customer { get; set; }

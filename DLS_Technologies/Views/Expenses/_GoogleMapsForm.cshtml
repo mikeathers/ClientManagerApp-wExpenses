@@ -1,5 +1,8 @@
 ﻿@model DLS_Technologies.ViewModels.MileageFormViewModel
 
+
+@Html.HiddenFor(m => m.DateTime)
+
 <div class="row">
     <div class="form-group col-sm-4">
         @Html.LabelFor(m => m.Origin)
@@ -29,10 +32,9 @@
     @Html.TextBoxFor(m => m.Cost, new { @class = "form-control", @readonly = "readonly" })
     @Html.ValidationMessageFor(m => m.Cost)
 </div>
-
+    
 
 <script>
-    
     $(document).ready(function () {
 
         var origin = document.getElementById('Origin');
@@ -73,6 +75,8 @@
                 }
             }
         }
+
+
 
         $("#TotalMiles").on("focusin", function () {
             var originResult = $("#Origin").val();
