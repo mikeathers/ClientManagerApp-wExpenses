@@ -1,11 +1,11 @@
 ﻿@model DLS_Technologies.ViewModels.ExpenseViewModel
 @{
-    ViewBag.Title = "Add New Expense";
+    var title = Model.Id == 0 ? ViewBag.Title = "Add New Expense" : "Edit Expense";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<br />
-<h2>@ViewBag.Title - @Html.ValueFor(m => m.ExpenseForm.Name)</h2>
-<br />
+
+<h3>@title - @Html.ValueFor(m => m.ExpenseForm.Name)</h3>
+<hr />
 @Html.ActionLink("Back", "ShowExpenses", "ExpenseForms", new { expenseFormId = Model.ExpenseForm.Id}, null)
 <br /><br />
 
@@ -52,35 +52,33 @@
 
     <script>
         function LoadExpenseForms(id) {
-
+            // Load new expense form partial.
             if ($("#Id").val() == 0) {
                 if (id == null)
                     var id = $("#ExpenseTypeId").val();
                 $.ajax({
                     type: "GET",
-                    url: "/expenses/loadpartial/" + id,
+                    url: "/expenses/loadexpensepartial/" + id,
                     success: function (result) {
                         $("#PartialFormatDiv").empty();
                         $("#PartialDiv").empty();
-                        $("#PartialDiv").html(result);
-
-                        if (id == 1) {
-                            $.ajax({
-                                method: "GET",
-                                url: "/expenses/loadmileageformat/" + 1,
-                                success: function (result) {
-                                    $("#PartialFormatDiv").empty();
-                                    $("#PartialFormatDiv").html(result);
-                                }
-                            })
-                        }
+                        $("#PartialDiv").html(result);                        
+                        $.ajax({
+                            method: "GET",
+                            url: "/expenses/loadmileageformat/" + 1,
+                            success: function (result) {
+                                $("#PartialFormatDiv").empty();
+                                $("#PartialFormatDiv").html(result);
+                            }
+                        });                        
                     }
                 });
             }
+            // Load edit expense form partial.
             else {
                 $.ajax({
                     type: "GET",
-                    url: "/expenses/loadeditpartial/",
+                    url: "/expenses/loadeditexpensepartial/",
                     data: {
                         id: $("#Id").val(),
                         expenseType: $("#ExpenseTypeId").val()
@@ -88,23 +86,19 @@
                     success: function (result) {
                         $("#PartialFormatDiv").empty();
                         $("#PartialDiv").empty();
-                        $("#PartialDiv").html(result);
-
-                        if (id == 1) {
-                            $.ajax({
-                                method: "GET",
-                                url: "/expenses/loadmileageformat/" + 1,
-                                success: function (result) {
-                                    $("#PartialFormatDiv").empty();
-                                    $("#PartialFormatDiv").html(result);
-                                }
-                            })
-                        }
+                        $("#PartialDiv").html(result);                        
+                        $.ajax({
+                            method: "GET",
+                            url: "/expenses/loadeditmileageformat/" + 1,
+                            success: function (result) {
+                                $("#PartialFormatDiv").empty();
+                                $("#PartialFormatDiv").html(result);
+                            }
+                        })
+                        
                     }
                 });
-            }
-
-            
+            }            
         }
 
         $(document).ready(function () {
@@ -118,7 +112,7 @@
                     if (result) {
                         $.ajax({
                             method: "DELETE",
-                            url: "/api/expenses/" + button.attr("data-expense-id"),
+                            url: "/api/expenses/deleteexpense/" + button.attr("data-expense-id"),
                             success: () => {
                                 console.log(id);
                                 window.location.href = "/ExpenseForms/ShowExpenses/" + id

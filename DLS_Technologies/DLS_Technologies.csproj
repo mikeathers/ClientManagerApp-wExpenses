@@ -591,6 +591,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\_SideNavBar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -701,6 +702,7 @@
     <Content Include="Scripts\React\Tutorial.jsx" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_SideNavBar.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -740,10 +742,11 @@
     <Content Include="Views\Expenses\ExpenseForm.cshtml" />
     <Content Include="Views\Expenses\_MileageForm.cshtml" />
     <Content Include="Views\Expenses\_OtherExpenseForm.cshtml" />
-    <Content Include="Views\ExpenseForms\AddNewExpenseFormForm.cshtml" />
+    <Content Include="Views\ExpenseForms\_NewExpenseForm.cshtml" />
     <Content Include="Views\ExpenseForms\ShowExpensesForm.cshtml" />
     <Content Include="Views\Expenses\_OdometerForm.cshtml" />
     <Content Include="Views\Expenses\_GoogleMapsForm.cshtml" />
+    <Content Include="Views\Shared\_SideNavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -800,7 +803,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50943</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50943/</IISUrl>
+          <IISUrl>http://localhost:54904/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

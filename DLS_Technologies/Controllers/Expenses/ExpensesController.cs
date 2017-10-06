@@ -19,10 +19,9 @@ namespace DLS_Technologies.Controllers
         public ExpensesController()
         {
             _context = new ApplicationDbContext();
-        }       
-        
+        }               
 
-
+        // GET expenses
         public ActionResult Index()
         {
             var expenseForms = _context.ExpenseForms.ToList();
@@ -32,7 +31,6 @@ namespace DLS_Technologies.Controllers
         
 
         // GET expenses/getexpense/1
-
         public ActionResult GetExpense(int id)
         {         
             var expense = _context.Expenses.Include(e => e.ExpenseType).FirstOrDefault(e => e.Id == id);
@@ -57,96 +55,9 @@ namespace DLS_Technologies.Controllers
             };
 
             return View("ExpenseForm", viewModel);
-
-            /*
-
-            if (expense.ExpenseTypeId == 1)
-            {
-                var viewModel = new MileageFormViewModel
-                {                    
-                    Date = expense.Date,
-                    ExpenseTypeId = expense.ExpenseTypeId,
-                    ExpenseFormId = expense.ExpenseFormId,
-                    Origin = expense.Origin,
-                    Destination = expense.Destination,
-                    OdometerStart = expense.OdometerStart,
-                    OdometerEnd = expense.OdometerEnd,
-                    TotalMiles = expense.TotalMiles,
-                    Cost = expense.Cost,
-                    Id = expense.Id,
-                    ExpenseTypes = _context.ExpenseTypes.ToList(),
-                    ExpenseType = _context.ExpenseTypes.Where(e => e.Id == expense.ExpenseTypeId).FirstOrDefault()                    
-
-                };
-
-                return View("ExpenseForm", viewModel);
-            }
-            else
-            {
-                var viewModel = new ExpenseViewModel
-                {
-                    Date = expense.Date.Value,
-                    ExpenseTypeId = expense.ExpenseTypeId,
-                    ExpenseFormId = expense.ExpenseFormId,
-                    Cost = expense.Cost,
-                    Description = expense.Description,
-                    Id = expense.Id,
-                    ExpenseTypes = _context.ExpenseTypes.ToList()
-                };
-                return View("EditExpenseForm", viewModel);
-            }     
-            */
+            
         }
-
-        public ActionResult LoadEditMileageFormats(int id, int formatType)
-        {
-            var expense = _context.Expenses.Include(e => e.ExpenseType).FirstOrDefault(e => e.Id == id);
-
-            if (expense == null)
-                return Content("Expense is null");
-
-            ViewBag.Title = "Expense - " + expense.ExpenseType.Name;
-
-
-            if (formatType == 1)
-            {
-                var viewModel = new MileageFormViewModel
-                {
-                    Date = expense.Date,
-                    ExpenseTypeId = expense.ExpenseTypeId,
-                    ExpenseFormId = expense.ExpenseFormId,
-                    Origin = expense.Origin,
-                    Destination = expense.Destination,
-                    TotalMiles = expense.TotalMiles,
-                    Cost = expense.Cost,
-                    Id = expense.Id,
-                    ExpenseTypes = _context.ExpenseTypes.ToList(),
-                    ExpenseType = _context.ExpenseTypes.Where(e => e.Id == expense.ExpenseTypeId).FirstOrDefault()
-                };
-
-                return View("_GoogleMapsForm", viewModel);
-            }
-            else
-            {
-                var viewModel = new MileageFormViewModel
-                {
-                    Date = expense.Date,
-                    ExpenseTypeId = expense.ExpenseTypeId,
-                    ExpenseFormId = expense.ExpenseFormId,
-                    Origin = expense.Origin,
-                    Destination = expense.Destination,
-                    OdometerStart = expense.OdometerStart,
-                    OdometerEnd = expense.OdometerEnd,
-                    TotalMiles = expense.TotalMiles,
-                    Cost = expense.Cost,
-                    Id = expense.Id,
-                    ExpenseTypes = _context.ExpenseTypes.ToList(),
-                    ExpenseType = _context.ExpenseTypes.Where(e => e.Id == expense.ExpenseTypeId).FirstOrDefault()
-                };
-
-                return View("_OdometerForm", viewModel);
-            }
-        }        
+        
 
         // GET expenses/new
         public ActionResult NewExpense(int expenseFormId)
@@ -163,16 +74,13 @@ namespace DLS_Technologies.Controllers
 
             return View("ExpenseForm", viewModel);           
         }
-        
 
+        
+        // POST expenses/save/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Expense expense)
         {
-            var parsedOrigin = "";
-            var parsedDestination = "";
-
-
             if (!ModelState.IsValid)
             {
                 var expenseTypes = _context.ExpenseTypes.ToList();
@@ -180,17 +88,21 @@ namespace DLS_Technologies.Controllers
                 var viewModel = new ExpenseViewModel
                 {
                     ExpenseTypes = expenseTypes,
-                    ExpenseForm = _context.ExpenseForms.Single(e => e.Id == expense.ExpenseFormId),
-
+                    ExpenseForm = _context.ExpenseForms.Single(e => e.Id == expense.ExpenseFormId)
                 };
 
                 return View("ExpenseForm", viewModel);
             }
 
 
+
+            var parsedOrigin = "";
+            var parsedDestination = "";
+
             if (expense.Cost == null)
                 expense.Cost = 0.00;
 
+            var expenseForm = _context.ExpenseForms.FirstOrDefault(e => e.Id == expense.ExpenseFormId);
 
             if(!String.IsNullOrEmpty(expense.Origin) || !String.IsNullOrEmpty(expense.Destination))
             {
@@ -204,12 +116,12 @@ namespace DLS_Technologies.Controllers
                     if (expense.Id == 0)
                     {
                         expense.DateTime = DateTime.Now;
+                        expenseForm.TotalCost += expense.Cost;
                         _context.Expenses.Add(expense);
                     }
                     else
                     {
-                        var expenseInDb = _context.Expenses.Single(e => e.Id == expense.Id);
-                        expenseInDb.Cost = expense.Cost;
+                        var expenseInDb = _context.Expenses.Single(e => e.Id == expense.Id);                        
                         expenseInDb.CustomerId = expense.CustomerId;
                         expenseInDb.Date = expense.Date;
                         expenseInDb.DateTime = expense.DateTime;
@@ -220,6 +132,11 @@ namespace DLS_Technologies.Controllers
                         expenseInDb.OdometerStart = expense.OdometerStart;
                         expenseInDb.Origin = expense.Origin;
                         expenseInDb.TotalMiles = expense.TotalMiles;
+
+                        expenseForm.TotalCost -= expenseInDb.Cost;
+                        expenseForm.TotalCost += expense.Cost;
+
+                        expenseInDb.Cost = expense.Cost;
                     }
                 }
                 else
@@ -238,13 +155,13 @@ namespace DLS_Technologies.Controllers
                     {
                         expense.Origin = parsedOrigin;
                         expense.Destination = parsedDestination;
+                        expenseForm.TotalCost += expense.Cost;
                         expense.DateTime = DateTime.Now;
                         _context.Expenses.Add(expense);
                     }
                     else
                     {
                         var expenseInDb = _context.Expenses.Single(e => e.Id == expense.Id);
-                        expenseInDb.Cost = expense.Cost;
                         expenseInDb.CustomerId = expense.CustomerId;
                         expenseInDb.Date = expense.Date;
                         expenseInDb.DateTime = expense.DateTime;
@@ -255,6 +172,11 @@ namespace DLS_Technologies.Controllers
                         expenseInDb.OdometerStart = expense.OdometerStart;
                         expenseInDb.Origin = parsedOrigin;
                         expenseInDb.TotalMiles = expense.TotalMiles;
+
+                        expenseForm.TotalCost -= expenseInDb.Cost;
+                        expenseForm.TotalCost += expense.Cost;
+
+                        expenseInDb.Cost = expense.Cost;
                     }
                 }
             }
@@ -262,42 +184,55 @@ namespace DLS_Technologies.Controllers
             {
                 if (expense.Id == 0)
                 {
+                    expenseForm.TotalCost += expense.Cost;
                     expense.DateTime = DateTime.Now;
                     _context.Expenses.Add(expense);
                 }
                 else
                 {
                     var expenseInDb = _context.Expenses.Single(e => e.Id == expense.Id);
-                    expenseInDb.Cost = expense.Cost;
                     expenseInDb.CustomerId = expense.CustomerId;
                     expenseInDb.Date = expense.Date;
                     expenseInDb.DateTime = expense.DateTime;
                     expenseInDb.Description = expense.Description;
                     expenseInDb.ExpenseFormId = expense.ExpenseFormId;
                     expenseInDb.ExpenseTypeId = expense.ExpenseTypeId;
-                }                
-            }      
 
+                    expenseForm.TotalCost -= expenseInDb.Cost;
+                    expenseForm.TotalCost += expense.Cost;
+
+                    expenseInDb.Cost = expense.Cost;
+                }                
+            }
+            
             _context.SaveChanges();
+
             return RedirectToAction("ShowExpenses", "ExpenseForms", new { expenseFormId = expense.ExpenseFormId });
         }
 
+
+
+        //-------------------------------------------------------------------------------------
+        // Partials 
+        // ------------------------------------------------------------------------------------
+
         
+
         public ActionResult LoadMileageFormat(int id)
         {
             if (id == 1)
             {
                 var viewModel = new MileageFormViewModel();
-                return PartialView("_GoogleMapsForm", viewModel);
+                return PartialView("_OdometerForm", viewModel);
             }
             else
             {
                 var viewModel = new MileageFormViewModel();
-                return PartialView("_OdometerForm", viewModel);
+                return PartialView("_GoogleMapsForm", viewModel);
             }
         }        
 
-        public ActionResult LoadPartial(int id)
+        public ActionResult LoadExpensePartial(int id)
         {
             if (id == 1)
             {
@@ -311,7 +246,7 @@ namespace DLS_Technologies.Controllers
             }
         }
 
-        public ActionResult LoadEditPartial(int id, int expenseType)
+        public ActionResult LoadEditExpensePartial(int id, int expenseType)
         {
             var expense = _context.Expenses.Include(e => e.ExpenseType).FirstOrDefault(e => e.Id == id);
 
@@ -351,23 +286,6 @@ namespace DLS_Technologies.Controllers
                     ExpenseFormId = expense.ExpenseFormId,
                     Origin = expense.Origin,
                     Destination = expense.Destination,
-                    TotalMiles = expense.TotalMiles,
-                    Cost = expense.Cost,
-                    Id = expense.Id,
-                    ExpenseTypes = _context.ExpenseTypes.ToList(),
-                    ExpenseType = _context.ExpenseTypes.Where(e => e.Id == expense.ExpenseTypeId).FirstOrDefault()
-                };
-                return PartialView("_GoogleMapsForm", viewModel);
-            }
-            else
-            {
-                var viewModel = new MileageFormViewModel
-                {
-                    Date = expense.Date,
-                    ExpenseTypeId = expense.ExpenseTypeId,
-                    ExpenseFormId = expense.ExpenseFormId,
-                    Origin = expense.Origin,
-                    Destination = expense.Destination,
                     OdometerStart = expense.OdometerStart,
                     OdometerEnd = expense.OdometerEnd,
                     TotalMiles = expense.TotalMiles,
@@ -375,9 +293,29 @@ namespace DLS_Technologies.Controllers
                     Id = expense.Id,
                     ExpenseTypes = _context.ExpenseTypes.ToList(),
                     ExpenseType = _context.ExpenseTypes.Where(e => e.Id == expense.ExpenseTypeId).FirstOrDefault()
+
+                    
+                };
+                return PartialView("_OdometerForm", viewModel);
+            }
+            else
+            {
+                var viewModel = new MileageFormViewModel
+                {
+                    Date = expense.Date,
+                    DateTime = expense.DateTime,
+                    ExpenseTypeId = expense.ExpenseTypeId,
+                    ExpenseFormId = expense.ExpenseFormId,
+                    Origin = expense.Origin,
+                    Destination = expense.Destination,
+                    TotalMiles = expense.TotalMiles,
+                    Cost = expense.Cost,
+                    Id = expense.Id,
+                    ExpenseTypes = _context.ExpenseTypes.ToList(),
+                    ExpenseType = _context.ExpenseTypes.Where(e => e.Id == expense.ExpenseTypeId).FirstOrDefault()
                 };
 
-                return PartialView("_OdometerForm", viewModel);
+                return PartialView("_GoogleMapsForm", viewModel);
             }
         }
 

@@ -14,17 +14,15 @@
     <br /><br />
 
 
+   
+
     <div hidden="hidden" id="addNewExpenseFormBtn" class="form-group">
-        @Html.LabelFor(m => m.Name)
-        <div class="row">
-            <div class="col-xs-3">
-                <div class="input-group">
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.LabelFor(m => m.Name)
+                <div class="input-group" style="width:300px;">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Form Name.." })
                     <span class="input-group-btn">
                         <button class="btn btn-success" type="submit">Add</button>
                     </span>
                 </div>
-            </div>
-        </div>
     </div>
 }

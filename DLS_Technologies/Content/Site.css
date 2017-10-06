@@ -1,6 +1,5 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 70px;
     height: 100%;
 }
 
@@ -24,36 +23,97 @@ textarea {
     max-width:280px;
 }
 
+hr {
+    margin-top: 21px;
+    margin-bottom: 21px;
+    border: 0;
+    border-top: 1px solid rgba(207, 207, 207, 0.79) !important;
+}
+
+
+
+/*---------------------------------*/
+/* Page Containers */
+/*---------------------------------*/
 
 .content {
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
 }
 
-
 .body {
     flex: 1;
+    min-height: 100vh !important;
+
+
 }
 .footer {
-   bottom: 0;
+    left: 0;
+    bottom: 0;
+    height:30px !important;
+    width: 100%;
+    text-align: center;
+    margin-bottom:30px;
 }
 
 
-table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
-   display:none;
+/*---------------------------------*/
+/* Page Elements */
+/*---------------------------------*/
+
+#add-form-input-group {
+    width: 250px !important;
 }
+
+/*---------------------------------*/
+/* Top Nav */
+/*---------------------------------*/
+
+.navbar-default {
+    z-index: 1000000;
+}
+
+/*---------------------------------*/
+/* Side Nav */
+/*---------------------------------*/
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #15a589;
+    background-color: #15a689;
+}
+
+.navbar-inverse {
+    background-color: #15a589;
+}
+
+
     
+/*---------------------------------*/
+/* jQuery DataTables */
+/*---------------------------------*/
+table .dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+display: none;
+}
 
-.validation-failed
-{
+div.dt-buttons {
+   margin-bottom: 10px;
+}
 
+div.dataTables_length {
+    margin-left: 40px;
+}
+
+
+
+/*---------------------------------*/
+/* styles for validation helpers */
+/*---------------------------------*/
+
+.validation-failed {
     color: red;
     margin-bottom: 10px;
 }
 
-/* styles for validation helpers */
 .field-validation-error {
     color: #b94a48 !important;
     color: red !important;
@@ -88,28 +148,76 @@ input[type="checkbox"].input-validation-error {
 }
 
 
+/*---------------------------------------------------*/
+/*------------------ Media Queries ------------------*/
+/*---------------------------------------------------*/
 
 
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
-
-.btn-row {
-    margin-bottom:5px;
-}
-.btn-row .btn {
-    width: 150px;
-    margin-left: 5px;
-}
-
-.btn-row-container {
-    margin-left:15px;
-}
-
-
-.row-form-expense {
-    width:45%;
+    body {
+        padding-top: 120px;
+        padding-bottom: 20px;
+        height: 100%;
+    }
 }
 
-.row-form-expense-other {
-    width: 55%;
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    
+    body {
+        padding-top: 70px;
+        padding-bottom: 20px;
+        padding-left: 40px;
+        height: 100%;
+    }
 }
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1124px) {
+    body {
+        padding-top: 70px;
+        padding-bottom: 20px;
+        padding-left: 50px;
+        height: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 100px;
+        padding-bottom: 20px;
+        padding-left: 40px;
+        height: 100%;
+    }
+
+}
+
+@media (max-width: 1220px) {
+    body {
+        padding-right: 20px;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        height: 100%;
+    }
+
+}
+    */
+
+    
+
 

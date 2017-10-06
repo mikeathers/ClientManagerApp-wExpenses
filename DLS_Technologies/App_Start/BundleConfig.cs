@@ -8,6 +8,7 @@ namespace DLS_Technologies
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // JavaScript Bundle. Added to _Layout partial. 
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui-{version}.js",
@@ -16,9 +17,11 @@ namespace DLS_Technologies
                         "~/Scripts/respond.js",
                         "~/scripts/datatables/jquery.datatables.js",
                         "~/scripts/datatables/datatables.bootstrap.js",
-                        "~/Content/DataTables-Buttons/datatables.min.js"
+                        "~/Content/DataTables-Buttons/datatables.min.js",
+                        "~/scripts/_sidenavbar.js"
                         ));
 
+            // jQuery Validation bundle. 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -27,7 +30,7 @@ namespace DLS_Technologies
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            
+            // CSS Bundle. 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-flatly.css",
                       "~/Content/themes/base/jquery-ui.css",
@@ -36,7 +39,8 @@ namespace DLS_Technologies
                       "~/content/datatables/css/datatables.bootstrap.css",
                       "~/content/datatables/css/buttons.dataTables.min.css",
                       "~/content/DataTables-Buttons/datatables.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/content/_sidenavbar.css"));
         }
     }
 }

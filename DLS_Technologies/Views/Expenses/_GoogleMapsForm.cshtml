@@ -66,6 +66,7 @@
                     $('#result').html("Issue with Origin or Destination entered, please make sure the spelling is correct and try again.").show();
                     $("#TotalMiles").val("");
                 } else {
+                    $('#result').html("");
                     var distance = response.rows[0].elements[0].distance;
                     var distance_value = distance.value;
                     var distance_text = distance.text;
@@ -79,14 +80,23 @@
 
 
         $("#TotalMiles").on("focusin", function () {
-            var originResult = $("#Origin").val();
-            var destinationResult = $("#Destination").val();
-            if (destinationResult != null)
+
+            if ($("#Destination").val() != null || undefined) {
+                var originResult = $("#Origin").val();
+                var destinationResult = $("#Destination").val();                
                 calculateDistance(originResult, destinationResult);
+            }
         }).on("focusout", function () {
             var miles = $(this).val();
-            var cost = miles * .25;
-            var result = parseFloat(Math.round(cost * 100) / 100).toFixed(2);
+            var result;
+
+            if (miles != null) {
+                var cost = miles * .25;
+                result = parseFloat(Math.round(cost * 100) / 100).toFixed(2);                
+            } else {
+                result = 0;
+            }
+
             $("#Cost").val(result);
         });
 

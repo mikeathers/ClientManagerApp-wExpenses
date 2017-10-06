@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace DLS_Technologies.Controllers.Api
@@ -17,10 +18,7 @@ namespace DLS_Technologies.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
-
-
-       
-
+        
 
         // DELETE api/expenseforms/1
         [HttpDelete]
@@ -35,12 +33,13 @@ namespace DLS_Technologies.Controllers.Api
             _context.SaveChanges();
         }
 
-
-
         // UPDATE api/expenseforms/1
         [HttpPut]
-        public void UpdateExpenseFormName(int id, string name)
+        public void UpdateExpenseFormName(FormDataCollection formData)
         {
+            var id = Convert.ToInt32(formData.Get("Id"));
+            var name = formData.Get("Name");
+
             var expenseFormInDb = _context.ExpenseForms.SingleOrDefault(e => e.Id == id);
 
             if (expenseFormInDb == null)
@@ -50,19 +49,6 @@ namespace DLS_Technologies.Controllers.Api
             _context.SaveChanges();
         }
 
-
-        [HttpPost]
-        public void UpdateTotalCost(int id, double totalCostValue)
-        {
-            var expenseForm = _context.ExpenseForms.FirstOrDefault(e => e.Id == id);
-
-            if (expenseForm == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-
-            expenseForm.TotalCost = totalCostValue;
-            _context.SaveChanges();
-        }
-
-
+        
     }
 }

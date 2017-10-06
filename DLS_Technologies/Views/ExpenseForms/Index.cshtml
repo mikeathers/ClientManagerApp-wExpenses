@@ -4,11 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br />
-<h2>@ViewBag.Title</h2>
-<br />
 
-@Html.Partial("AddNewExpenseFormForm", new DLS_Technologies.ViewModels.ExpenseFormViewModel())
+<h2>@ViewBag.Title</h2>
+<hr />
+
+@Html.Partial("_NewExpenseForm", new DLS_Technologies.ViewModels.ExpenseFormViewModel())
 @{ 
     if (!Model.Any())
     {
@@ -44,15 +44,8 @@
     }
 }
 
-
-
-
-
 @section scripts 
 {
-
-   
-
     <script>
         $(document).ready(function () {
             $("#showNewExpenseFormBtn").on("click", function (e) {
@@ -72,16 +65,13 @@
 
             });
 
-            //$("#expenseFormsTable)
-            //
-
             $("#expenseFormsTable").on("click", ".js-delete", function () {
                 var button = $(this);
                 bootbox.confirm("Are you sure you want to delete this Expense Form?", (result) => {
                     if (result) {
                         $.ajax({
                             method: "DELETE",
-                            url: "/api/expenseforms/" + button.attr("data-expenseform-id"),
+                            url: "/api/expenseforms/deleteexpenseform/" + button.attr("data-expenseform-id"),
                             success: function () {
                                 table.row(button.parents("tr")).remove().draw();
                             }
@@ -92,16 +82,17 @@
             }).on("click", ".js-edit", function () {
                 var button = $(this);
                 var id = button.attr("data-expenseform-id");
-                bootbox.prompt("Form Name:", function (result) {
-                    if (result) {
-                        var data = { id: id, name: result };
+                bootbox.prompt("Form Name:", function (name) {
+                    if (name) {
                         $.ajax({
                             method: "PUT",
-                            url: "/api/expenseforms/",
-                            contentType: 'application/json; charset=utf-8',
-                            data: JSON.stringify(data),
-                            dataType: 'json',
-                            success: function () {
+                            url: "/api/expenseforms/updateexpenseformname/",
+                            dataType: "json",
+                            data: {
+                                id: id,
+                                name: name
+                            },
+                            success: function (result) {
                                 window.location.reload();
                             }
                         });

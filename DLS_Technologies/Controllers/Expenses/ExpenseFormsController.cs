@@ -98,27 +98,20 @@ namespace DLS_Technologies.Controllers
             ViewBag.Title = viewModel.ExpenseForm.Name + " - " + name;            
 
             return View("ShowExpensesForm", viewModel);
-        }                
-        
-        [HttpPost]
-        public void UpdateTotalCost(int id, double totalCost)
-        {
-            var expenseForm = _context.ExpenseForms.Include(e => e.User).FirstOrDefault(e => e.Id == id);
-            var expenses = _context.Expenses.Where(e => e.ExpenseFormId == id).ToList();
-
-            if (expenseForm == null)
-                return;
-
-            double totalCosts = 0;
-
-            foreach (var expense in expenses)
-            {
-                totalCosts += expense.Cost.Value;
-            }
-
-            expenseForm.TotalCost = totalCosts;
-            _context.SaveChanges();
-            
         }
+
+        // UPDATE api/expenseforms/1
+        [HttpPut]
+        public void UpdateExpenseFormName(int id, string name)
+        {
+            var expenseFormInDb = _context.ExpenseForms.SingleOrDefault(e => e.Id == id);
+
+            if (expenseFormInDb == null)
+                 Content("Not found");
+
+            expenseFormInDb.Name = name;
+            _context.SaveChanges();
+        }
+
     }
 }

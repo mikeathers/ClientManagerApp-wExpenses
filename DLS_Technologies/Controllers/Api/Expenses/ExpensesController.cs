@@ -28,9 +28,7 @@ namespace DLS_Technologies.Controllers.Api
             if (expenseInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-
-            expenseForm.TotalCost -= expenseInDb.Cost.Value;
-           
+            expenseForm.TotalCost -= expenseInDb.Cost.Value;           
 
             _context.Expenses.Remove(expenseInDb);
             _context.SaveChanges();

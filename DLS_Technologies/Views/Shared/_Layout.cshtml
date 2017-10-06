@@ -18,15 +18,14 @@
 
     <div class="content">
         @Html.Partial("_NavBar")
-        <div class="container body-content">
+        @Html.Partial("_SideNavBar")
+        <div class="container">
             <div class="body">
                 @RenderBody()
-                <br /><br />
-            </div>
-            <div class="footer">
-                <p>&copy; @DateTime.Now.Year - DLS Technologies Ltd.</p>
-            </div>
+            </div>            
         </div>
+        <hr />
+        <div class="footer">&copy; DLS Technologies @DateTime.Today.Year</div>
     </div>
     
     
