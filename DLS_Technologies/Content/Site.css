@@ -27,7 +27,10 @@ hr {
     margin-top: 21px;
     margin-bottom: 21px;
     border: 0;
-    border-top: 1px solid rgba(207, 207, 207, 0.79) !important;
+    
+    
+    
+    : 1px solid rgba(207, 207, 207, 0.79) !important;
 }
 
 
@@ -61,14 +64,57 @@ hr {
 /* Page Elements */
 /*---------------------------------*/
 
+
+
+.dropdown-menu .divider {
+    background-color: #15a689 !important;
+}
+
 #add-form-input-group {
     width: 250px !important;
 }
 
+#custSearchBox {
+    background-color: #2C3E50;
+    border: hidden;
+    border-bottom: .5px solid #15a689;
+    height: 30px;
+    color: white;
+    padding: 10px;
+}
+
+    #custSearchBox:focus {        
+        outline: none;
+    }
+.custSearchBoxDiv {
+    margin-top: 15px;
+    padding-right: 50px;
+    margin-left: 1px;
+}
+
+#custSearchBoxSide {
+    background-color: #18BC9C;
+    border: hidden;
+    border-bottom: .3px #15a689 solid !important;
+    height: 50px;
+    color: #fff;
+    padding: 10px;
+}
+    #custSearchBoxSide:focus {
+        outline: none;
+    }
+
+custSearchBoxSide::-webkit-input-placeholder {
+    color: #2C3E50 !important;
+}
+
+input::-webkit-input-placeholder {
+    color: white !important;
+}
+    
 /*---------------------------------*/
 /* Top Nav */
 /*---------------------------------*/
-
 .navbar-default {
     z-index: 1000000;
 }
@@ -78,16 +124,26 @@ hr {
 /*---------------------------------*/
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    background-color: #15a589;
-    background-color: #15a689;
-}
-
-.navbar-inverse {
-    background-color: #15a589;
+    background-color: #fff;
 }
 
 
-    
+nav.sidebar .navbar-nav > li {
+    border-bottom: .3px #15a689 solid !important;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #2C3E50;    
+}
+
+.navbar-inverse .navbar-nav > li > a :hover {
+    color:#fff !important;
+}
+
+.navbar-inverse .navbar-nav > li :hover {
+    color:#fff !important;
+}
+
+
 /*---------------------------------*/
 /* jQuery DataTables */
 /*---------------------------------*/
@@ -161,6 +217,15 @@ input[type="checkbox"].input-validation-error {
         padding-bottom: 20px;
         height: 100%;
     }
+    #custSearchBoxSide {
+        background-color: #18BC9C;
+        border: hidden;
+        border-bottom: .3px #15a689 solid !important;
+        height: 60px;
+        color: #fff;
+        padding: 10px;
+        font-size: 20px;
+    }
 }
 
 /* iPads (portrait and landscape) ----------- */
@@ -171,14 +236,14 @@ input[type="checkbox"].input-validation-error {
         padding-bottom: 20px;
         padding-left: 40px;
         height: 100%;
-    }
+    }    
 }
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1124px) {
     body {
         padding-top: 70px;
         padding-bottom: 20px;
-        padding-left: 50px;
+        padding-left: 0px;
         height: 100%;
     }
 }
@@ -194,29 +259,6 @@ input[type="checkbox"].input-validation-error {
 
 
 
-/*
-
-
-@media (min-width: 768px) {
-    body {
-        padding-top: 100px;
-        padding-bottom: 20px;
-        padding-left: 40px;
-        height: 100%;
-    }
-
-}
-
-@media (max-width: 1220px) {
-    body {
-        padding-right: 20px;
-        padding-top: 50px;
-        padding-bottom: 20px;
-        height: 100%;
-    }
-
-}
-    */
 
     
 

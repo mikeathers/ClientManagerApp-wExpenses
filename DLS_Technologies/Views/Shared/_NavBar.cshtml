@@ -1,4 +1,5 @@
 ﻿<div class="navbar navbar-default navbar-fixed-top">
+    
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
@@ -10,10 +11,15 @@
         </div>
         <div class="navbar-collapse navbar-collapse-1 collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Expenses", "Index", "ExpenseForms")</li>
+                             
             </ul>
+            
             @Html.Partial("_LoginPartial")
-        </div>
+
+            <ul class="nav navbar-nav navbar-right custSearchBoxDiv">
+                <li><input id="custSearchBox" type="text" placeholder="Search..."/></li>
+            </ul>
+</div>
     </div>
 </div>
 

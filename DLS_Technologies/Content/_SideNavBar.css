@@ -10,7 +10,7 @@
 
 nav.sidebar.navbar {
     border-radius: 0px;
-    margin-top: 60px;    
+    margin-top: 59px;    
 }
 
 nav.sidebar, .main {
@@ -74,7 +74,7 @@ nav.sidebar, .main {
 
     /*adds border top to first nav box */
     nav.sidebar .navbar-nav > li:first-child {
-        border-top: 1px #e5e5e5 solid;
+        /*border-top: 1px #e5e5e5 solid;*/
     }
 
     /*adds border to bottom nav boxes*/
@@ -102,7 +102,8 @@ nav.sidebar, .main {
 
     /*colors dropdown box text */
     .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
-        color: #777;
+        color: #2C3E50;
+        
     }    
     
     /*gives sidebar width/height*/
