@@ -39,6 +39,7 @@ namespace DLS_Technologies
                       "~/content/datatables/css/datatables.bootstrap.css",
                       "~/content/datatables/css/buttons.dataTables.min.css",
                       "~/content/DataTables-Buttons/datatables.min.css",
+                      "~/content/font-awesome/css/font-awesome.min.css",
                       "~/Content/site.css",
                       "~/content/_sidenavbar.css"));
         }

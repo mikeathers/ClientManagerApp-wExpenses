@@ -21,7 +21,7 @@ namespace DLS_Technologies.Controllers
             _context = new ApplicationDbContext();
         }               
 
-        // GET expenses
+        // GET /expenses/
         public ActionResult Index()
         {
             var expenseForms = _context.ExpenseForms.ToList();
@@ -30,7 +30,7 @@ namespace DLS_Technologies.Controllers
         }   
         
 
-        // GET expenses/getexpense/1
+        // GET /expenses/getexpense/1
         public ActionResult GetExpense(int id)
         {         
             var expense = _context.Expenses.Include(e => e.ExpenseType).FirstOrDefault(e => e.Id == id);
@@ -59,7 +59,7 @@ namespace DLS_Technologies.Controllers
         }
         
 
-        // GET expenses/new
+        // GET /expenses/new
         public ActionResult NewExpense(int expenseFormId)
         {
             var expenseTypes = _context.ExpenseTypes.ToList();
@@ -76,7 +76,7 @@ namespace DLS_Technologies.Controllers
         }
 
         
-        // POST expenses/save/1
+        // POST /expenses/save/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Expense expense)

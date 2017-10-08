@@ -31,34 +31,28 @@ namespace DLS_Technologies.Controllers
             
         }
 
-
-
-
         public ActionResult Index()
         {
             var _user = _userManager.FindById(User.Identity.GetUserId());
             var expenseForms = _context.ExpenseForms.Where(e => e.UserId == _user.Id).ToList();            
 
             return View(expenseForms);
-        }       
-        
-        
+        }                     
         
         // GET: Expenses
         [HttpPost]
         public ActionResult SaveExpenseForm(ExpenseFormViewModel expenseForm)
         {
-            var _user = _userManager.FindById(User.Identity.GetUserId());
-            var expenseForms = _context.ExpenseForms.Where(e => e.UserId == _user.Id).ToList();
+            if (!ModelState.IsValid)            
+                return View("Index");           
 
-            if (!ModelState.IsValid)
-            {              
-                return View("Index");
-            }
+
+            var _user = _userManager.FindById(User.Identity.GetUserId());
+
+            var expenseForms = _context.ExpenseForms.Where(e => e.UserId == _user.Id).ToList();          
 
             if (expenseForm.Id == 0)
             {
-
                 var expenseFormToSave = new ExpenseForm
                 {
                     Name = expenseForm.Name,
@@ -68,8 +62,7 @@ namespace DLS_Technologies.Controllers
                     User = _user
                 };
                 _context.ExpenseForms.Add(expenseFormToSave);
-            }
-                
+            }                
             else
             {
                 var _expenseFormInDb = _context.ExpenseForms.First(e => e.Id == expenseForm.Id);
@@ -100,18 +93,7 @@ namespace DLS_Technologies.Controllers
             return View("ShowExpensesForm", viewModel);
         }
 
-        // UPDATE api/expenseforms/1
-        [HttpPut]
-        public void UpdateExpenseFormName(int id, string name)
-        {
-            var expenseFormInDb = _context.ExpenseForms.SingleOrDefault(e => e.Id == id);
-
-            if (expenseFormInDb == null)
-                 Content("Not found");
-
-            expenseFormInDb.Name = name;
-            _context.SaveChanges();
-        }
+        
 
     }
 }

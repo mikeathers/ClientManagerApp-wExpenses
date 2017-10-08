@@ -26,14 +26,12 @@ textarea {
 hr {
     margin-top: 21px;
     margin-bottom: 21px;
-    border: 0;
-    
-    
-    
-    : 1px solid rgba(207, 207, 207, 0.79) !important;
+    border: 1px solid rgba(207, 207, 207, 0.79) !important;
 }
 
-
+.fa .fa-bug {
+    color:white;
+}
 
 /*---------------------------------*/
 /* Page Containers */
@@ -60,18 +58,16 @@ hr {
 }
 
 
-/*---------------------------------*/
+/*----------------------------------------------------*/
 /* Page Elements */
+/*----------------------------------------------------*/
+
+/*---------------------------------*/
+/* NavBar Elements */
 /*---------------------------------*/
 
-
-
-.dropdown-menu .divider {
-    background-color: #15a689 !important;
-}
-
-#add-form-input-group {
-    width: 250px !important;
+.navbar-default-top {
+    z-index: 1000000;
 }
 
 #custSearchBox {
@@ -83,9 +79,11 @@ hr {
     padding: 10px;
 }
 
-    #custSearchBox:focus {        
+    #custSearchBox:focus, #custSearchBox:active, #custSearchBox:hover {
         outline: none;
+        background-color: #2C3E50 !important;
     }
+
 .custSearchBoxDiv {
     margin-top: 15px;
     padding-right: 50px;
@@ -94,54 +92,39 @@ hr {
 
 #custSearchBoxSide {
     background-color: #18BC9C;
+    width:60%;
     border: hidden;
     border-bottom: .3px #15a689 solid !important;
     height: 50px;
     color: #fff;
-    padding: 10px;
 }
     #custSearchBoxSide:focus {
         outline: none;
     }
 
-custSearchBoxSide::-webkit-input-placeholder {
-    color: #2C3E50 !important;
-}
-
 input::-webkit-input-placeholder {
     color: white !important;
 }
-    
-/*---------------------------------*/
-/* Top Nav */
-/*---------------------------------*/
-.navbar-default {
-    z-index: 1000000;
-}
+
+
 
 /*---------------------------------*/
-/* Side Nav */
+/* ExpenseForm Elements */
 /*---------------------------------*/
 
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    background-color: #fff;
+#add-form-input-group {
+    width: 250px !important;
 }
 
 
-nav.sidebar .navbar-nav > li {
-    border-bottom: .3px #15a689 solid !important;
-}
-.navbar-inverse .navbar-nav > li > a {
-    color: #2C3E50;    
+/*---------------------------------*/
+/* CustomerForm Elements */
+/*---------------------------------*/
+
+.initial-customer-notes {
+    max-width: 100%;
 }
 
-.navbar-inverse .navbar-nav > li > a :hover {
-    color:#fff !important;
-}
-
-.navbar-inverse .navbar-nav > li :hover {
-    color:#fff !important;
-}
 
 
 /*---------------------------------*/
@@ -162,7 +145,7 @@ div.dataTables_length {
 
 
 /*---------------------------------*/
-/* styles for validation helpers */
+/* Validation Helpers */
 /*---------------------------------*/
 
 .validation-failed {
@@ -170,38 +153,22 @@ div.dataTables_length {
     margin-bottom: 10px;
 }
 
-.field-validation-error {
+.field-validation-error, .validation-summary-errors {
     color: #b94a48 !important;
     color: red !important;
 }
 
-.field-validation-valid {
+.field-validation-valid, .validation-summary-valid, input[type="checkbox"].input-validation-error {
     display: none !important;
 }
 
-input.input-validation-error {
+input.input-validation-error, textarea.input-validation-error, select.input-validation-error {
     border: 1px solid #b94a48 !important;
     border: 1px solid red !important;
 }
 
 
-select.input-validation-error {
-    border: 1px solid #b94a48 !important;
-    border: 1px solid red !important;
-}
 
-input[type="checkbox"].input-validation-error {
-    border: 0 none !important;
-}
-
-.validation-summary-errors {
-    color: #b94a48 !important;
-    color: red !important;
-}
-
-.validation-summary-valid {
-    display: none !important;
-}
 
 
 /*---------------------------------------------------*/
@@ -225,6 +192,9 @@ input[type="checkbox"].input-validation-error {
         color: #fff;
         padding: 10px;
         font-size: 20px;
+    }
+    #custSearchBoxShow {
+        visibility:hidden;
     }
 }
 

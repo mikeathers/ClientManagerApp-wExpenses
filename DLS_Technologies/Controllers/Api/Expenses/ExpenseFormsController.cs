@@ -18,11 +18,11 @@ namespace DLS_Technologies.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
-        
+
 
         // DELETE api/expenseforms/1
         [HttpDelete]
-        public void DeleteExpenseForm (int id)
+        public void DeleteExpenseForm(int id)
         {
             var expenseFormInDb = _context.ExpenseForms.SingleOrDefault(e => e.Id == id);
 
@@ -49,6 +49,6 @@ namespace DLS_Technologies.Controllers.Api
             _context.SaveChanges();
         }
 
-        
+
     }
 }

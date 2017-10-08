@@ -20,7 +20,7 @@
 
 <div class="form-group">
     @Html.LabelFor(m => m.TotalMiles)
-    @Html.TextBoxFor(m => m.TotalMiles, new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.TotalMiles, new { @class = "form-control", @type = "number" })
     @Html.ValidationMessageFor(m => m.TotalMiles)
 </div>
 
@@ -29,7 +29,7 @@
 
 <div class="form-group">
     @Html.LabelFor(m => m.Cost)
-    @Html.TextBoxFor(m => m.Cost, new { @class = "form-control", @readonly = "readonly" })
+    @Html.TextBoxFor(m => m.Cost, new { @class = "form-control", @readonly = "readonly", @type = "number" })
     @Html.ValidationMessageFor(m => m.Cost)
 </div>
     
