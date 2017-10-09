@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 70px;
+    padding-top: 90px;
     height: 100%;
 }
 
@@ -31,6 +31,10 @@ hr {
 
 .fa .fa-bug {
     color:white;
+}
+
+.modal-content {
+    margin-top:120px;
 }
 
 /*---------------------------------*/
@@ -65,6 +69,8 @@ hr {
 /*---------------------------------*/
 /* NavBar Elements */
 /*---------------------------------*/
+
+
 
 .navbar-default-top {
     z-index: 1000000;
@@ -102,11 +108,24 @@ hr {
         outline: none;
     }
 
-input::-webkit-input-placeholder {
+input.search-box::-webkit-input-placeholder {
     color: white !important;
 }
 
 
+
+
+.logo-link-top {
+    width: 168px;
+    height: 70px;
+    margin: 20px 10px 10px 15px;
+    display: none;
+}
+.logo-link-side {
+    width: 168px;
+    height: 70px;
+    margin: 30px 10px 10px 15px;
+}
 
 /*---------------------------------*/
 /* ExpenseForm Elements */
@@ -125,29 +144,70 @@ input::-webkit-input-placeholder {
     max-width: 100%;
 }
 
+.new-customer-note {
+    max-width: 100%;
+}
+
+/*---------------------------------*/
+/* CustomerDetails Elements */
+/*---------------------------------*/
+
+.notes-btn {
+    line-height: 0 !important;
+}
+
+
 
 
 /*---------------------------------*/
 /* jQuery DataTables */
 /*---------------------------------*/
 table .dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
-display: none;
+    display: none;
 }
 
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: right;
+    display: inline-block;
+    float: right;
+}
 div.dt-buttons {
-   margin-bottom: 10px;
 }
-
 div.dataTables_length {
-    margin-left: 40px;
+    display: inline-block;
 }
+#expensesTable_length {
+    margin-left:100px;
+}
+.dt-buttons > .btn {
+    background-color: #18BC9C;
+    color:#fff;
+    margin-bottom: 10px;
+}
+    .dt-buttons  :hover {
+        color: #2C3E50;
+    }
 
+.pagination > li > .disabled > a {
+    background-color: #18BC9C !important;
+    background-color: grey !important;
+    cursor: default !important;
+}
+    .pagination > li.disabled > a :focus, .disabled > a :active {
+        background-color: #2C3E50 !important;
+    }
 
+.pagination > li > a, .pagination > li > span {
+    background-color: #2C3E50 !important;
+}
+    .pagination > li > a:focus, .pagination > li > span:focus {
+        outline: none;
+        background-color: #18BC9C !important;
+    }
 
 /*---------------------------------*/
 /* Validation Helpers */
 /*---------------------------------*/
-
 .validation-failed {
     color: red;
     margin-bottom: 10px;
@@ -180,7 +240,7 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
     body {
-        padding-top: 120px;
+        padding-top: 170px;
         padding-bottom: 20px;
         height: 100%;
     }
@@ -196,26 +256,71 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
     #custSearchBoxShow {
         visibility:hidden;
     }
+
+    .logo-link-side {
+        width: 168px;
+        height: 70px;
+        margin: 20px 10px 10px 15px;
+        display:none;
+    }
+
+    .logo-link-top {
+        width: 168px;
+        height: 70px;
+        margin: 20px 10px 10px 15px;
+        display:block;
+    }
+
+    .navbar-logo {
+        display:none;
+    }
+
+    nav.sidebar.navbar {
+        border-radius: 0px;
+        margin-top: 100px;
+    }
+
+    .remember-me-btn {
+        margin-left: 25px;
+        margin-bottom: 10px;
+    }
 }
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     
     body {
-        padding-top: 70px;
+        padding-top: 90px;
         padding-bottom: 20px;
         padding-left: 40px;
         height: 100%;
-    }    
+    }
+    .remember-me-btn {
+        margin-left: 25px;
+        margin-bottom: 10px;
+    }
 }
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1124px) {
     body {
-        padding-top: 70px;
+        padding-top: 80px;
         padding-bottom: 20px;
         padding-left: 0px;
         height: 100%;
     }
+    .logo-link-top {
+        width: 168px;
+        height: 70px;
+        margin: 20px 10px 10px 15px;
+        display:none;
+    }
+
+    .remember-me-btn {
+        margin-left: 150px;
+        margin-bottom: 10px;
+    }
+
+    
 }
 
 

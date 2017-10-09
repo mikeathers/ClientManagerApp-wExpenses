@@ -1,0 +1,25 @@
+﻿@model DLS_Technologies.Models.Customers.CustomerNote
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.CustomerId)
+
+    <div hidden="hidden" class="row" id="new-note-form">
+        <div class="form-group col-lg-8">
+            @Html.LabelFor(m => m.Note)
+            @Html.TextAreaFor(m => m.Note, new { @class = "form-control new-customer-note", @placeholder = "New Note" })
+            <button id="add-note" class="btn btn-link pull-right">Add</button>
+            <button id="cancel-note" class="btn btn-link pull-right">Cancel</button>            
+        </div>
+        <div class="col-lg-offset-4"></div>
+        
+    </div>
+}
+
+<button id="show-new-note-btn" class="btn btn-link">Add Note</button>
+
+

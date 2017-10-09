@@ -7,7 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("DLS Technologies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+              <a href="/"><img class="logo-link-top" src="~/Content/images/dls-logo.png" /></a>            
+            @Html.ActionLink("DLS Technologies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbar-logo" })
         </div>
         <div class="navbar-collapse navbar-collapse-1 collapse">
             <ul class="nav navbar-nav">
@@ -17,7 +18,7 @@
             @Html.Partial("_LoginPartial")
 
             <ul class="nav navbar-nav navbar-right custSearchBoxDiv">
-                <li id="custSearchBoxShow"><input id="custSearchBox" type="text" placeholder="Search..."/></li>
+                <li id="custSearchBoxShow"><input id="custSearchBox" class="search-box" type="text" placeholder="Search..."/></li>
             </ul>
 </div>
     </div>

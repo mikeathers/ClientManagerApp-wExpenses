@@ -1,0 +1,144 @@
+﻿@model DLS_Technologies.ViewModels.CustomerViewModels.CustomerViewModel
+@{
+    ViewBag.Title = "New Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<hr />
+@Html.ActionLink("Back", "Index", "Customers", new { }, null)<br />
+
+<div class="row" style="margin-bottom:10px; margin-left:-15px;">
+    <button class="btn btn-link">Customer Details</button>
+    <button class="btn btn-link">Site Info</button>
+</div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                @Html.LabelFor(m => m.ContactOnSite)
+                @Html.ValueFor(m => m.ContactOnSite)
+            </div>
+            <div class="form-group col-sm-4">
+                @Html.LabelFor(m => m.AccountTypeId)
+                @Html.ValueFor(m => m.AccountType.Name)
+            </div>
+            <div class="col-lg-offset-4"></div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                @Html.LabelFor(m => m.Address)
+                @Html.ValueFor(m => m.Address)
+            </div>
+            <div class="form-group col-sm-4">
+                @Html.LabelFor(m => m.ContactInfo)
+                @Html.ValueFor(m => m.ContactInfo)
+            </div>
+            <div class="col-sm-offset-4"></div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                @Html.LabelFor(m => m.PostCode)
+                @Html.ValueFor(m => m.PostCode)
+            </div>
+            <div class="form-group col-sm-4">
+                @Html.LabelFor(m => m.DateJoined)
+                @Html.ValueFor(m => m.DateJoined, "{0:dd-MM-yyyy}")
+            </div>
+            <div class="col-sm-offset-4"></div>
+        </div>
+
+
+        if (Model.AccountType.MonthlySiteVisit == true)
+        {
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        @Html.LabelFor(m => m.MonthlySiteVisitDate)
+                        @Html.ValueFor(m => m.MonthlySiteVisitDate, "{0:dd-MM-yyyy}")
+                    </div>
+                    <div class="form-group col-sm-4">
+                        @Html.LabelFor(m => m.MonthlySiteVisitDue)
+                        @Html.ValueFor(m => m.MonthlySiteVisitDue)
+                    </div>
+                    <div class="col-sm-offset-4"></div>
+                </div>
+        }
+
+        
+        <div id="customer-notes-table"></div>
+     }
+
+
+@Html.Partial("_CustomerNote", new DLS_Technologies.Models.Customers.CustomerNote { CustomerId = Model.Id })
+<br /><br />
+<div>
+    <button class="btn btn-success">Edit Customer</button>
+    <button class="btn btn-primary">Delete Customer</button>
+</div>
+
+@section scripts 
+{
+    <script>
+        function loadCustNotesTable() {
+            $.ajax({
+                method: "GET",
+                url: "/Customers/LoadCustomerNotesTable/" + $("#Id").val(),
+                success: function (result) {
+                    $("#customer-notes-table").empty();
+                    $("#customer-notes-table").html(result);
+                }
+            })
+        }
+
+        $(document).ready(function () {
+
+            loadCustNotesTable();
+           
+
+            $("#show-new-note-btn").on("click", function (e) {
+                e.preventDefault();
+                $(this).fadeOut();
+                $("#new-note-form").delay("400").fadeIn();                
+            });
+
+            
+            $("#add-note").on("click", function (e) {
+                e.preventDefault();
+                console.log("hello");
+                $.ajax({
+                    method: "POST",
+                    url: "/Api/Customers/AddNewNote/",
+                    data: {
+                        note: $("#Note").val(),
+                        customerId: $("#Id").val()
+                    },
+                    success: function () {
+                        loadCustNotesTable();
+                        $("#new-note-form").fadeToggle();
+                        $("#show-new-note-btn").delay("400").fadeIn();
+                    }
+                });
+            });
+
+            $("#cancel-note").on("click", function (e) {
+                e.preventDefault();
+                $("#new-note-form").fadeToggle();
+                $("#show-new-note-btn").delay("400").fadeIn();
+            });
+
+
+            
+
+            
+
+        })
+    </script>
+}

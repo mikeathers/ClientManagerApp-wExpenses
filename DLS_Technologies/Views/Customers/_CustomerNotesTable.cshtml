@@ -1,0 +1,24 @@
+﻿@model DLS_Technologies.ViewModels.CustomerViewModels.CustomerNotesViewModel
+
+<div class="row">
+
+   
+
+
+    <table class="table table-bordered table-hover table-responsive">
+        <tbody>
+            @{
+                foreach (var notes in Model.Notes)
+                {
+                    <tr>
+                        <td>@notes.Note</td>
+                        <td>@notes.DateAdded.ToShortDateString()</td>
+                        <td>User</td>
+                        <td><button class="btn btn-link js-delete notes-btn">Edit</button></td>
+                        <td><button class="btn btn-link js-delete notes-btn">Delete</button></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>   
+</div>   

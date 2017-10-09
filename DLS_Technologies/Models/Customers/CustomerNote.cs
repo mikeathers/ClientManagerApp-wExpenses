@@ -11,6 +11,7 @@ namespace DLS_Technologies.Models.Customers
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "New Note:")]
         public string Note { get; set; }
 
         public Customer Customer { get; set; }
