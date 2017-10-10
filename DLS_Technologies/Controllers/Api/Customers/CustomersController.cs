@@ -41,5 +41,47 @@ namespace DLS_Technologies.Controllers.Api.Customers
             return Ok();
 
         }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteCustomerNote(int id)
+        {
+            var note = _context.CustomerNotes.Single(n => n.Id == id);
+
+            if (note == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            _context.CustomerNotes.Remove(note);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        // DELETE /api/customers/deletecustomer/1
+        [HttpDelete]
+        public void DeleteCustomer(int id)
+        {
+            var customerInDb = _context.Customers.FirstOrDefault(e => e.Id == id);
+
+            if (customerInDb == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            
+
+            _context.Customers.Remove(customerInDb);
+            _context.SaveChanges();
+        }
+
+        [HttpPut]
+        public IHttpActionResult UpdateCustomerNote(FormDataCollection formData)
+        {
+            var id = Convert.ToInt32(formData.Get("id"));
+            var note = formData.Get("note");
+
+            var customer = _context.Customers.Single(c => c.Id == id);
+
+            customer.Note = note;
+            _context.SaveChanges();
+
+            return Ok();
+        }
     }
 }

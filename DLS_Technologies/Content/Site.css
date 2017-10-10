@@ -29,6 +29,10 @@ hr {
     border: 1px solid rgba(207, 207, 207, 0.79) !important;
 }
 
+.btn:focus {
+    outline:none !important;
+}
+
 .fa .fa-bug {
     color:white;
 }
@@ -140,12 +144,15 @@ input.search-box::-webkit-input-placeholder {
 /* CustomerForm Elements */
 /*---------------------------------*/
 
-.initial-customer-notes {
+
+
+.new-cust-note {
     max-width: 100%;
 }
-
-.new-customer-note {
+.new-cust-note-view {
     max-width: 100%;
+    padding:10px;
+    margin-left:10px;
 }
 
 /*---------------------------------*/
@@ -155,7 +162,9 @@ input.search-box::-webkit-input-placeholder {
 .notes-btn {
     line-height: 0 !important;
 }
-
+#show-new-note-btn {
+    text-align: right !important;
+}
 
 
 

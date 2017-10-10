@@ -44,23 +44,7 @@ namespace DLS_Technologies.Controllers.Customers
         public ActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.Single(c => c.Id == id);
-            var custNotes = _context.CustomerNotes.ToList().Where(c => c.CustomerId == id);
-
-            var customerViewModel = new CustomerViewModel
-            {
-                DateJoined = customer.DateJoined,
-                Name = customer.Name,
-                Id = customer.Id,
-                Notes = custNotes,
-                Address = customer.Address,
-                ContactInfo = customer.ContactInfo,
-                PostCode = customer.PostCode,
-                AccountType = _context.AccountTypes.FirstOrDefault(a => a.Id == customer.AccountTypeId),
-                MonthlySiteVisitDate = customer.MonthlySiteVisitDate,
-                MonthlySiteVisitDue = customer.MonthlySiteVisitDue
-            };
-
-            return View("CustomerDetails", customerViewModel);
+            return View("CustomerDetails", customer);
 
         }
 
@@ -83,12 +67,12 @@ namespace DLS_Technologies.Controllers.Customers
 
             if(customer.Id == 0)
             {
-                if(customer.InitialNote != null)
+                if(customer.Note != null)
                 {
                     var custNote = new CustomerNote
                     {
                         CustomerId = customer.Id,
-                        Note = customer.InitialNote,
+                        Note = customer.Note,
                         DateAdded = DateTime.Now
                     };
                     _context.CustomerNotes.Add(custNote);
@@ -105,20 +89,8 @@ namespace DLS_Technologies.Controllers.Customers
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
 
-                var customerView = new Customer
-                {
-                    DateJoined = customer.DateJoined,
-                    Name = customer.Name,
-                    Id = customer.Id,
-                    InitialNote = customer.InitialNote,
-                    Address = customer.Address,
-                    ContactInfo = customer.ContactInfo,
-                    PostCode = customer.PostCode,
-                    AccountType = _context.AccountTypes.FirstOrDefault(a => a.Id == customer.AccountTypeId),
-                    MonthlySiteVisitDate = customer.MonthlySiteVisitDate,
-                    MonthlySiteVisitDue = customer.MonthlySiteVisitDue
-                };
-                return View("CustomerDetails", customerView);
+                
+                return View("CustomerDetails", customer);
             }
             return View();
         }
@@ -149,15 +121,16 @@ namespace DLS_Technologies.Controllers.Customers
             return PartialView("_CustomerNote", newNote);
         }
 
-        public ActionResult LoadCustomerNotesTable(int id)
+        public ActionResult LoadCustomerNotes(int id)
         {
-            var notes = _context.CustomerNotes.ToList().Where(c => c.CustomerId == id);
-            var customerNotes = new CustomerNotesViewModel
+            var customer = _context.Customers.Single(c => c.Id == id);
+            var customerNotes = new CustomerViewModel
             {
-                Notes = notes
+                Id = customer.Id,
+                Note = customer.Note
             };
 
-            return PartialView("_CustomerNotesTable", customerNotes);
+            return PartialView("_CustomerNotes", customerNotes);
         }
     }
 }

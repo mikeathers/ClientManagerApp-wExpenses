@@ -13,13 +13,7 @@ namespace DLS_Technologies
             /// Routes for API requests. 
             // Add API routes here if they differ from the default route. 
 
-            config.MapHttpAttributeRoutes();
-
-            /*config.Routes.MapHttpRoute(
-                name: "UpdateExpenseFormName",
-                routeTemplate: "api/{controller}/{action}/",
-                defaults: new { id = RouteParameter.Optional, name = RouteParameter.Optional }
-            );*/
+            config.MapHttpAttributeRoutes();           
 
 
             RouteTable.Routes.MapHttpRoute(

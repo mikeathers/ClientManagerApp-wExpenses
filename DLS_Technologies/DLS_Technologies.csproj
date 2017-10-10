@@ -332,6 +332,10 @@
     <Compile Include="Migrations\201710082140207_AddContactOnSiteToCustomer.Designer.cs">
       <DependentUpon>201710082140207_AddContactOnSiteToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710102118103_UpdateInitialNoteInCustomerToNote.cs" />
+    <Compile Include="Migrations\201710102118103_UpdateInitialNoteInCustomerToNote.Designer.cs">
+      <DependentUpon>201710102118103_UpdateInitialNoteInCustomerToNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers\AccountType.cs" />
     <Compile Include="Models\Customers\CustomerNote.cs" />
@@ -723,6 +727,7 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <None Include="Scripts\jquery-1.12.4-vsdoc.js" />
+    <Content Include="Scripts\FormScripts\customer-notes.js" />
     <Content Include="Scripts\GoogleMapsAPI\GoogleMapsAPI.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -788,7 +793,7 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Customers\CustomerDetails.cshtml" />
     <Content Include="Views\Customers\_CustomerNote.cshtml" />
-    <Content Include="Views\Customers\_CustomerNotesTable.cshtml" />
+    <Content Include="Views\Customers\_CustomerNotes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -861,6 +866,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710082140207_AddContactOnSiteToCustomer.resx">
       <DependentUpon>201710082140207_AddContactOnSiteToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710102118103_UpdateInitialNoteInCustomerToNote.resx">
+      <DependentUpon>201710102118103_UpdateInitialNoteInCustomerToNote.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

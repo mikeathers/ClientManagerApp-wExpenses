@@ -40,7 +40,7 @@ namespace DLS_Technologies.Models
         public string ContactInfo { get; set; }
 
         [Display(Name = "Notes:")]
-        public string InitialNote { get; set; }
+        public string Note { get; set; }
 
         [Display(Name = "Site Visit Date:")]
         public DateTime? MonthlySiteVisitDate { get; set; }

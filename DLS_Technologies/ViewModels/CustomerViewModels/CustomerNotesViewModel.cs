@@ -15,6 +15,7 @@ namespace DLS_Technologies.ViewModels.CustomerViewModels
 
         public string Note { get; set; }
 
+        [Display(Name = "Notes:")]
         public IEnumerable<CustomerNote> Notes { get; set; }
     }
 }

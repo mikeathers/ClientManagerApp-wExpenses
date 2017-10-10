@@ -1,4 +1,4 @@
-﻿@model DLS_Technologies.ViewModels.CustomerViewModels.CustomerViewModel
+﻿@model DLS_Technologies.Models.Customer
 @{
     ViewBag.Title = "New Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -57,7 +57,7 @@
         </div>
 
 
-        if (Model.AccountType.MonthlySiteVisit == true)
+        if (Model.MonthlySiteVisitDue == true)
         {
                 <div class="row">
                     <div class="form-group col-sm-4">
@@ -71,37 +71,47 @@
                     <div class="col-sm-offset-4"></div>
                 </div>
         }
-
+        <br />
         
-        <div id="customer-notes-table"></div>
-     }
+        <div id="customer-notes-partial"></div>
+        
+    }
+        
 
 
-@Html.Partial("_CustomerNote", new DLS_Technologies.Models.Customers.CustomerNote { CustomerId = Model.Id })
-<br /><br />
-<div>
-    <button class="btn btn-success">Edit Customer</button>
-    <button class="btn btn-primary">Delete Customer</button>
-</div>
+        <br /><br />
+
+        <div>
+            <button class="btn btn-success">Edit Customer</button>
+            <button id="del-customer-btn" class="btn btn-primary" data-customer-id="@Model.Id">Delete Customer</button>
+        </div>
 
 @section scripts 
 {
     <script>
-        function loadCustNotesTable() {
+        
+        function loadCustNotes() {
             $.ajax({
                 method: "GET",
-                url: "/Customers/LoadCustomerNotesTable/" + $("#Id").val(),
+                url: "/Customers/LoadCustomerNotes/",
+                data: {
+                    id: $("#Id").val()
+                },
                 success: function (result) {
-                    $("#customer-notes-table").empty();
-                    $("#customer-notes-table").html(result);
+                    $("#customer-notes-partial").empty();
+                    $("#customer-notes-partial").html(result);
                 }
             })
         }
 
         $(document).ready(function () {
 
-            loadCustNotesTable();
+            loadCustNotes();
+
+            
            
+
+
 
             $("#show-new-note-btn").on("click", function (e) {
                 e.preventDefault();
@@ -134,10 +144,23 @@
                 $("#show-new-note-btn").delay("400").fadeIn();
             });
 
+            $("#del-customer-btn").on("click", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this Customer?", (result) => {
+                    if (result) {
+                        $.ajax({
+                            method: "DELETE",
+                            url: "/api/customers/deletecustomer/" + button.attr("data-customer-id"),
+                            
+                            success: () => {
+                                window.location.href = "/Customers/"
+                            }
+                        });
+                    }
+                });
+            })
 
-            
-
-            
+                       
 
         })
     </script>

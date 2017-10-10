@@ -46,9 +46,7 @@ namespace DLS_Technologies.ViewModels.CustomerViewModels
 
         [Display(Name = "Notes:")]
         public CustomerNote CustomerNote { get; set; }
-
-        [Display(Name = "Notes:")]
-        public string InitialNote { get; set; }
+        
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "Site Visit Date:")]
@@ -60,6 +58,8 @@ namespace DLS_Technologies.ViewModels.CustomerViewModels
         [Display(Name = "Notes:")]
         public IEnumerable<CustomerNote> Notes { get; set; }
 
+        [Display(Name = "Notes:")]
+        public string Note { get; set; }
     }
 
 
