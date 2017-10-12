@@ -17,9 +17,9 @@ namespace DLS_Technologies.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
-
-        // DELETE /api/expenses/deleteexpense/1
+        
         [HttpDelete]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public void DeleteExpense(int id)
         {
             var expenseInDb = _context.Expenses.FirstOrDefault(e => e.Id == id);

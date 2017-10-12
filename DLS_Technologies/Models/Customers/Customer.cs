@@ -24,6 +24,10 @@ namespace DLS_Technologies.Models
         public string ContactOnSite { get; set; }
 
         [Required]
+        [Display(Name = "Email Address:")]
+        public string EmailAddress { get; set; }
+
+        [Required]
         [Display(Name = "Date Joined:")]
         public DateTime DateJoined { get; set; }
 
@@ -44,9 +48,7 @@ namespace DLS_Technologies.Models
 
         [Display(Name = "Site Visit Date:")]
         public DateTime? MonthlySiteVisitDate { get; set; }
-
-        [Display(Name = "Site Visit Due:")]
-        public bool? MonthlySiteVisitDue { get; set; }
-
+        
+        
     }
 }

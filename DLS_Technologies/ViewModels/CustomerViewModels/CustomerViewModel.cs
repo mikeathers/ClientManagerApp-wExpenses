@@ -28,7 +28,10 @@ namespace DLS_Technologies.ViewModels.CustomerViewModels
         public string ContactOnSite { get; set; }
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "Email Address:")]
+        public string EmailAddress { get; set; }
+
+        [Required]
         [Display(Name = "Date Joined:")]
         public DateTime DateJoined { get; set; }
 
@@ -42,22 +45,11 @@ namespace DLS_Technologies.ViewModels.CustomerViewModels
 
         [Required]
         [Display(Name = "Contact Information:")]
-        public string ContactInfo { get; set; }
-
-        [Display(Name = "Notes:")]
-        public CustomerNote CustomerNote { get; set; }
+        public string ContactInfo { get; set; }        
         
-
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "Site Visit Date:")]
-        public DateTime? MonthlySiteVisitDate { get; set; }
-
-        [Display(Name = "Site Visit:")]
-        public bool? MonthlySiteVisitDue { get; set; }
-
-        [Display(Name = "Notes:")]
-        public IEnumerable<CustomerNote> Notes { get; set; }
-
+        public DateTime? MonthlySiteVisitDate { get; set; }        
+        
         [Display(Name = "Notes:")]
         public string Note { get; set; }
     }

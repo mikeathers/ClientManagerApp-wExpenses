@@ -1,25 +1,39 @@
 ﻿
 
 
+var token = $('input[name="__RequestVerificationToken"]').val();
+$.ajaxPrefilter(function (options, originalOptions) {
+    if (options.type.toUpperCase() == "PUT") {
+        options.data = $.param($.extend(originalOptions.data, { __RequestVerificationToken: token }));
+    }
+});
 
+$("#edit-notes-btn").on("click", function (e) {
+    e.preventDefault();
+    $("#Note").removeAttr("readonly");
+    $(".new-cust-note").focus();
+});
 
-$(document).ready(function () {
-    console.log("Hello");
-    $("#customer-notes-table").on("click", "js-delete", function (e) {
-        e.preventDefault();
-        console.log("clicked delete");
-            var button = $(this);
-            var id = button.attr("data-form-id");
-            bootbox.confirm("Are you sure you want to delete this Note?", (result) => {
-                if (result) {
-                    $.ajax({
-                        method: "DELETE",
-                        url: "/api/customers/deletecustomernote/" + button.attr("data-note-id"),
-                        success: function () {
-                            LoadExpenseForms();
-                        }
-                    });
-                };
-            });
-        });
-})
+$("#save-notes-btn").on("click", function (e) {
+    e.preventDefault();
+    $.ajax({
+        method: "PUT",
+        url: "/Api/Customers/UpdateCustomerNote/",
+        data: {
+            id: $("#save-notes-btn").attr("data-customer-id"),
+            note: $("#Note").val()
+        },
+    }).then(function () {
+        $.ajax({
+            method: "GET",
+            url: "/Customers/LoadCustomerNotes/",
+            data: {
+                id: $("#Id").val()
+            },
+        }).done( function (result) {
+                $("#customer-notes-partial").empty();
+                $("#customer-notes-partial").html(result);
+        })
+        
+    })
+});

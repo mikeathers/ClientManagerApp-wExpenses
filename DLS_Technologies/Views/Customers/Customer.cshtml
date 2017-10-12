@@ -1,0 +1,70 @@
+﻿@model DLS_Technologies.Models.Customer
+@{
+    ViewBag.Title = "New Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<hr />
+@Html.ActionLink("Back", "Index", "Customers", new { }, null)<br />
+
+<input type="hidden" id="Id" name="Id" value="@Model.Id">
+
+<div class="row" style="margin-bottom:10px; margin-left:-15px;">
+    <button id="cust-info-btn" class="btn btn-link cust-btns" data-btn-id="1">Customer Info</button>
+    <button id="site-info-btn" class="btn btn-link cust-btns" data-btn-id="2">Site Info</button>
+    <button id="account-info-btn" class="btn btn-link cust-btns" data-btn-id="2">Account Info</button>
+</div>
+
+<div id="customer-partial"></div>
+
+
+
+
+@section scripts {
+    
+    <script>
+        
+
+        function LoadCustomerInfoPartial(button) {
+            var btnId = button.attr("data-btn-id");
+
+            $.ajax({
+                method: "GET",
+                url: "/Customers/LoadCustomerInfoPartial/",
+                data: {
+                    custId: $("#Id").val(),
+                    btnId: btnId
+                }
+            }).done(function (result) {
+                $("#customer-partial").empty();
+                $("#customer-partial").html(result);
+            });
+        
+        }
+
+
+
+        $(document).ready(function () {
+
+            LoadCustomerInfoPartial($("#cust-info-btn"));
+
+
+            $("#cust-info-btn").on("click", function () {
+                LoadCustomerInfoPartial($("#cust-info-btn"));
+            });
+            $("#site-info-btn").on("click", function () {
+                LoadCustomerInfoPartial($("#site-info-btn"));
+            });
+            $("#account-info-btn").on("click", function () {
+                LoadCustomerInfoPartial($("#account-info-btn"));
+            });
+        })
+       
+        
+
+
+
+    </script>
+
+}

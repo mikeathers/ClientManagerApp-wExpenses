@@ -159,8 +159,8 @@ namespace DLS_Technologies.Controllers
                 {
                     //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
                     //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.CreateAsync(new IdentityRole(RoleName.CanManagerUsers));
-                    //await UserManager.AddToRoleAsync(user.Id, RoleName.CanManagerUsers);
+                    //await roleManager.CreateAsync(new IdentityRole(RoleName.Admin));
+                    //await UserManager.AddToRoleAsync(user.Id, RoleName.Admin);
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

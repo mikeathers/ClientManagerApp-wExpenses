@@ -7,6 +7,6 @@ namespace DLS_Technologies.Utilities
 {
     public static class RoleName
     {
-        public const string CanManagerUsers = "CanManageUsers";
+        public const string Admin = "Admin";
     }
 }

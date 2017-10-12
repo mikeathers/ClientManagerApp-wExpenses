@@ -23,6 +23,15 @@ textarea {
     max-width:280px;
 }
 
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fff!important;
+    resize: none !important;
+}
+
+
+
+
+
 hr {
     margin-top: 21px;
     margin-bottom: 21px;
@@ -155,9 +164,11 @@ input.search-box::-webkit-input-placeholder {
     margin-left:10px;
 }
 
+
 /*---------------------------------*/
 /* CustomerDetails Elements */
 /*---------------------------------*/
+
 
 .notes-btn {
     line-height: 0 !important;
@@ -167,6 +178,30 @@ input.search-box::-webkit-input-placeholder {
 }
 
 
+/*---------------------------------*/
+/* SiteInfo Elements */
+/*---------------------------------*/
+
+.siteinfo-tab-notes {
+    max-width: 100%;
+    padding: 10px;
+    margin-left: 10px;
+    border:none !important;
+    outline:none !important;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #18BC9C !important;
+}
+
+.nav-tabs > li > a {
+    color: #2C3E50 !important;
+}
+
+.siteinfo-tab-btns {
+    text-align: right !important;
+    margin-top: -20px;
+}
 
 /*---------------------------------*/
 /* jQuery DataTables */

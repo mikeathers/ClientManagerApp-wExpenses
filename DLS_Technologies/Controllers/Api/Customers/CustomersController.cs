@@ -7,6 +7,8 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using System.Web.Helpers;
+using DLS_Technologies.ViewModels.CustomerViewModels;
 
 namespace DLS_Technologies.Controllers.Api.Customers
 {
@@ -19,59 +21,68 @@ namespace DLS_Technologies.Controllers.Api.Customers
             _context = new ApplicationDbContext();
         }
 
-        [HttpPost]
-        public IHttpActionResult AddNewNote(FormDataCollection formData)
+        [HttpPut]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        public void SaveSiteInfoNote(FormDataCollection formData)
         {
-            var customerId = Convert.ToInt32(formData.Get("CustomerId"));
-            var note = formData.Get("Note");
+            var note = formData.Get("note");
+            var noteType = formData.Get("noteType");
+            var custId = Convert.ToInt32(formData.Get("custId"));
+            var type = noteType.Substring(noteType.Length - 4);
 
-            var newNote = new CustomerNote
+            var siteNotes = _context.SiteInfoNotes.Where(n => n.CustomerId == custId).ToList() != null ? _context.SiteInfoNotes.Where(n => n.CustomerId == custId).ToList() : null;
+            var servers = _context.CustomerServers.Where(s => s.CustomerId == custId).ToList() != null ? _context.CustomerServers.Where(s => s.CustomerId == custId).ToList() : null;
+
+            var siteInfo = _context.SiteInfos.Single(s => s.CustomerId == custId);
+            var siteInfoVm = new SiteInfoViewModel
             {
-                Note = note,
-                DateAdded = DateTime.Now,
-                CustomerId = customerId
+                Id = siteInfo.Id,
+                CustomerId = siteInfo.CustomerId,
+                NetworkInfo = siteInfo.NetworkInfo,
+                WifiInfo = siteInfo.WifiInfo,
+                DomainInfo = siteInfo.DomainInfo,
+                Notes = siteNotes,
+                Servers = servers
             };
 
             if (note == null)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            {
+                ModelState.AddModelError(noteType, type + " Info box does not contain any data.");
+            }
 
-            _context.CustomerNotes.Add(newNote);
+            switch (noteType)
+            {
+                case "Network":
+                    siteInfo.NetworkInfo = note;
+                    break;
+                case "Wifi":
+                    siteInfo.WifiInfo = note;
+                    break;
+                case "Domain":
+                    siteInfo.DomainInfo = note;
+                    break;
+            }
+
             _context.SaveChanges();
 
-            return Ok();
 
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteCustomerNote(int id)
-        {
-            var note = _context.CustomerNotes.Single(n => n.Id == id);
-
-            if (note == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-
-            _context.CustomerNotes.Remove(note);
-            _context.SaveChanges();
-
-            return Ok();
-        }
-
-        // DELETE /api/customers/deletecustomer/1
-        [HttpDelete]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public void DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.FirstOrDefault(e => e.Id == id);
 
-            if (customerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            
+
 
             _context.Customers.Remove(customerInDb);
             _context.SaveChanges();
         }
 
         [HttpPut]
-        public IHttpActionResult UpdateCustomerNote(FormDataCollection formData)
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        public void UpdateCustomerNote(FormDataCollection formData)
         {
             var id = Convert.ToInt32(formData.Get("id"));
             var note = formData.Get("note");
@@ -81,7 +92,6 @@ namespace DLS_Technologies.Controllers.Api.Customers
             customer.Note = note;
             _context.SaveChanges();
 
-            return Ok();
         }
     }
 }

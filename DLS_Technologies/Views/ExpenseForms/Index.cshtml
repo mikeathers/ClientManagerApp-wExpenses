@@ -47,6 +47,13 @@
 @section scripts 
 {
     <script>
+        var token = $('input[name="__RequestVerificationToken"]').val();
+        $.ajaxPrefilter(function (options, originalOptions) {
+            if (options.type.toUpperCase() == "PUT") {
+                options.data = $.param($.extend(originalOptions.data, { __RequestVerificationToken: token }));
+            }
+        });
+
         $(document).ready(function () {
             $("#showNewExpenseFormBtn").on("click", function (e) {
                 e.preventDefault();
@@ -72,7 +79,7 @@
                     if (result) {
                         $.ajax({
                             method: "DELETE",
-                            url: "/api/expenseforms/deleteexpenseform/" + button.attr("data-expenseform-id"),
+                            url: "/Api/Expenseforms/Deleteexpenseform/" + button.attr("data-expenseform-id"),
                             success: function () {
                                 table.row(button.parents("tr")).remove().draw();
                             }
@@ -87,8 +94,7 @@
                     if (name) {
                         $.ajax({
                             method: "PUT",
-                            url: "/api/expenseforms/updateexpenseformname/",
-                            dataType: "json",
+                            url: "/Api/Expenseforms/UpdateExpenseFormName/",
                             data: {
                                 id: id,
                                 name: name

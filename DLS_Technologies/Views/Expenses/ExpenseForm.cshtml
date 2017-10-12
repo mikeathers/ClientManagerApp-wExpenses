@@ -18,14 +18,12 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.Date)
-            @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })          
-            @Html.ValidationMessageFor(m => m.Date)
+            @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })     
         </div>
 
         <div class="form-group">
             @Html.LabelFor(m => m.ExpenseTypeId)
             @Html.DropDownListFor(m => m.ExpenseTypeId, new SelectList(Model.ExpenseTypes, "Id", "Name", "1"), "Select Expense Type", new { @class = "form-control", @onChange = "LoadExpenseForms()" })
-            @Html.ValidationMessageFor(m => m.ExpenseTypeId)
         </div>        
 
         <div id="PartialDiv">
@@ -58,14 +56,14 @@
                     var id = $("#ExpenseTypeId").val();
                 $.ajax({
                     type: "GET",
-                    url: "/expenses/loadexpensepartial/" + id,
+                    url: "/Expenses/LoadExpensePartial/" + id,
                     success: function (result) {
                         $("#PartialFormatDiv").empty();
                         $("#PartialDiv").empty();
                         $("#PartialDiv").html(result);                        
                         $.ajax({
                             method: "GET",
-                            url: "/expenses/loadmileageformat/" + 1,
+                            url: "/Expenses/LoadMileageFormat/" + 1,
                             success: function (result) {
                                 $("#PartialFormatDiv").empty();
                                 $("#PartialFormatDiv").html(result);
@@ -78,7 +76,7 @@
             else {
                 $.ajax({
                     type: "GET",
-                    url: "/expenses/loadeditexpensepartial/",
+                    url: "/Expenses/LoadEditExpensePartial/",
                     data: {
                         id: $("#Id").val(),
                         expenseType: $("#ExpenseTypeId").val()
@@ -89,7 +87,11 @@
                         $("#PartialDiv").html(result);                        
                         $.ajax({
                             method: "GET",
-                            url: "/expenses/loadeditmileageformat/" + 1,
+                            url: "/Expenses/LoadEditMileageFormat/",
+                            data: {
+                                id: 1,
+                                mileageFormat:1
+                            },
                             success: function (result) {
                                 $("#PartialFormatDiv").empty();
                                 $("#PartialFormatDiv").html(result);
@@ -112,7 +114,8 @@
                     if (result) {
                         $.ajax({
                             method: "DELETE",
-                            url: "/api/expenses/deleteexpense/" + button.attr("data-expense-id"),
+                            url: "/Api/Expenses/DeleteExpense/" + button.attr("data-expense-id"),
+                            dataType: "json",
                             success: () => {
                                 console.log(id);
                                 window.location.href = "/ExpenseForms/ShowExpenses/" + id

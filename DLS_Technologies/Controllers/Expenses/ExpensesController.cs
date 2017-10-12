@@ -12,6 +12,11 @@ using Microsoft.AspNet.Identity;
 
 namespace DLS_Technologies.Controllers
 {
+    /// <summary>
+    /// TODO: Add validation for each HTTP Request.
+    /// TODO: Use DTOs instead of domain model.
+    /// </summary>
+    
     public class ExpensesController : Controller
     {
         ApplicationDbContext _context;
@@ -210,13 +215,25 @@ namespace DLS_Technologies.Controllers
             return RedirectToAction("ShowExpenses", "ExpenseForms", new { expenseFormId = expense.ExpenseFormId });
         }
 
+        [HttpDelete]
+        [ValidateAntiForgeryToken]
+        public void DeleteExpense(int id)
+        {
+            var expenseInDb = _context.Expenses.FirstOrDefault(e => e.Id == id);
+            var expenseForm = _context.Expenses.Where(e => e.Id == id).Select(e => e.ExpenseForm).FirstOrDefault();
+            
+            expenseForm.TotalCost -= expenseInDb.Cost.Value;
 
+            _context.Expenses.Remove(expenseInDb);
+            _context.SaveChanges();
+           
+        }
 
         //-------------------------------------------------------------------------------------
         // Partials 
         // ------------------------------------------------------------------------------------
 
-        
+
 
         public ActionResult LoadMileageFormat(int id)
         {

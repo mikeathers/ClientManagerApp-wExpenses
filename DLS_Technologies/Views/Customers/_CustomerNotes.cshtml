@@ -3,12 +3,9 @@
 <div class="row">
     <div class="form-group col-sm-8">
         @Html.LabelFor(m => m.Note)
-        <br />
-        <div id="cust-note-view" class="new-cust-note-view">
-            @Html.ValueFor(m => m.Note)
-        </div>
-        <div id="cust-note-edit" hidden="hidden">
-            @Html.TextAreaFor(m => m.Note, new { @class = "form-control new-cust-note", @placeholder = "Initial Notes" })
+        <br />        
+        <div id="cust-note-edit">
+            @Html.TextAreaFor(m => m.Note, new { @class = "form-control new-cust-note", @placeholder = "Click Edit to add a note...", @readonly = true })
         </div>
         <br />
         <div style="text-align:right;">
@@ -19,41 +16,6 @@
     <div class="col-sm-offset-4"></div>
 </div>
 
-<script>
-    
-
-    
-
-    $("#edit-notes-btn").on("click", function (e) {
-        console.log("yhi")
-        e.preventDefault();
-        $("#cust-note-view").hide();
-        $("#cust-note-edit").fadeIn();
-        $(this).fadeOut;
-        $("#save-notes-btn").fadeIn();
-    });
-
-    $("#save-notes-btn").on("click", function (e) {
-        e.preventDefault();
-        $("#cust-note-edit").hide();
-        $("#cust-note-view").fadeIn();
-        $(this).fadeOut;
-        $("#edit-notes-btn").fadeIn();
-
-        $.ajax({
-            method: "PUT",
-            url: "/Api/Customers/UpdateCustomerNote/",
-            data: {
-                id: $("#save-notes-btn").attr("data-customer-id"),
-                note: $("#Note").val()
-            },
-            success: function () {
-                loadCustNotes();
-            }
-        })
-    });
-    
-
-</script>
+@Scripts.Render("~/scripts/formscripts/customer-notes.js")
 
 

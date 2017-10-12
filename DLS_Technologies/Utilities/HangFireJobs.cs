@@ -22,11 +22,11 @@ namespace DLS_Technologies.Utilities
             {
                 if(customer.AccountTypeId == 1)
                 {
-                    customer.MonthlySiteVisitDue = (customer.MonthlySiteVisitDate.Value - DateTime.Now).TotalSeconds < 30;
-                    if(customer.MonthlySiteVisitDue == true)
-                    {
-                        HangFireTest(customer.MonthlySiteVisitDate.Value);
-                    }
+                    //customer.MonthlySiteVisitDue = (customer.MonthlySiteVisitDate.Value - DateTime.Now).TotalSeconds < 30;
+                    //if(customer.MonthlySiteVisitDue == true)
+                   // {
+                   //     HangFireTest(customer.MonthlySiteVisitDate.Value);
+                    //}
 
                 }
             }

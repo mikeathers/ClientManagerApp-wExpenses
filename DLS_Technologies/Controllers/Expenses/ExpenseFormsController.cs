@@ -13,9 +13,17 @@ using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Net.Http.Formatting;
 
 namespace DLS_Technologies.Controllers
 {
+
+    /// <summary>
+    /// TODO: Add validation for each HTTP Request.
+    /// TODO: Use DTOs instead of domain model.
+    /// </summary>
+
+
     public class ExpenseFormsController : Controller
     {
         /// Application DB context        

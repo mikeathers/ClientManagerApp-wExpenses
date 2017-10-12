@@ -1,0 +1,8 @@
+﻿@model DLS_Technologies.Models.Customer
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="Id" name="Id" value="@Model.Id">
+}

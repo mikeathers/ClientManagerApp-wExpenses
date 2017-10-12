@@ -65,15 +65,15 @@
             } else {
                 result = 0;                
             }
-                
+            $("#TotalMiles").val(result);
+        });  
 
-            $("#TotalMiles").val(result).on("focusout", function () {
-                var miles = $(this).val();
-                var cost = miles * .25;
-                var result = parseFloat(Math.round(cost * 100) / 100).toFixed(2);
-                $("#Cost").val(result);
-            });;
-        });      
+        $("#TotalMiles").on("focusout", function () {
+            var miles = $(this).val();
+            var cost = miles * .25;
+            var result = parseFloat(Math.round(cost * 100) / 100).toFixed(2);
+            $("#Cost").val(result);
+        });;
         
     });
     

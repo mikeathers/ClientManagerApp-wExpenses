@@ -260,86 +260,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709252022080_Initial.cs" />
-    <Compile Include="Migrations\201709252022080_Initial.Designer.cs">
-      <DependentUpon>201709252022080_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201710120554052_Initial.cs" />
+    <Compile Include="Migrations\201710120554052_Initial.Designer.cs">
+      <DependentUpon>201710120554052_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709252023562_AddExpenseTypesData.cs" />
-    <Compile Include="Migrations\201709252023562_AddExpenseTypesData.Designer.cs">
-      <DependentUpon>201709252023562_AddExpenseTypesData.cs</DependentUpon>
+    <Compile Include="Migrations\201710120556136_SeedTables.cs" />
+    <Compile Include="Migrations\201710120556136_SeedTables.Designer.cs">
+      <DependentUpon>201710120556136_SeedTables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709252048559_SeedExpensesTable.cs" />
-    <Compile Include="Migrations\201709252048559_SeedExpensesTable.Designer.cs">
-      <DependentUpon>201709252048559_SeedExpensesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709252103063_SeedExpensesTableMore.cs" />
-    <Compile Include="Migrations\201709252103063_SeedExpensesTableMore.Designer.cs">
-      <DependentUpon>201709252103063_SeedExpensesTableMore.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709292032403_SeedUsers.cs" />
-    <Compile Include="Migrations\201709292032403_SeedUsers.Designer.cs">
-      <DependentUpon>201709292032403_SeedUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710032138494_AddDateTimeToExpense.cs" />
-    <Compile Include="Migrations\201710032138494_AddDateTimeToExpense.Designer.cs">
-      <DependentUpon>201710032138494_AddDateTimeToExpense.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710072320450_UpdateCustomerModel.cs" />
-    <Compile Include="Migrations\201710072320450_UpdateCustomerModel.Designer.cs">
-      <DependentUpon>201710072320450_UpdateCustomerModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710072351443_AddAccountTypeModel.cs" />
-    <Compile Include="Migrations\201710072351443_AddAccountTypeModel.Designer.cs">
-      <DependentUpon>201710072351443_AddAccountTypeModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710072352343_SeedAccountTypes.cs" />
-    <Compile Include="Migrations\201710072352343_SeedAccountTypes.Designer.cs">
-      <DependentUpon>201710072352343_SeedAccountTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710080013448_AddAccountTypeToCustomer.cs" />
-    <Compile Include="Migrations\201710080013448_AddAccountTypeToCustomer.Designer.cs">
-      <DependentUpon>201710080013448_AddAccountTypeToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710080020015_AddDateJoinedToCustomer.cs" />
-    <Compile Include="Migrations\201710080020015_AddDateJoinedToCustomer.Designer.cs">
-      <DependentUpon>201710080020015_AddDateJoinedToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710080113240_AddCustomerNoteModel.cs" />
-    <Compile Include="Migrations\201710080113240_AddCustomerNoteModel.Designer.cs">
-      <DependentUpon>201710080113240_AddCustomerNoteModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710080148200_RemoveCustomerFromCustomerNotes.cs" />
-    <Compile Include="Migrations\201710080148200_RemoveCustomerFromCustomerNotes.Designer.cs">
-      <DependentUpon>201710080148200_RemoveCustomerFromCustomerNotes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710080150281_AddCustomerToCustomerNotes.cs" />
-    <Compile Include="Migrations\201710080150281_AddCustomerToCustomerNotes.Designer.cs">
-      <DependentUpon>201710080150281_AddCustomerToCustomerNotes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710080154522_UpdateCustomer.cs" />
-    <Compile Include="Migrations\201710080154522_UpdateCustomer.Designer.cs">
-      <DependentUpon>201710080154522_UpdateCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710081430512_AddMonthlySiteVisitToCustomer.cs" />
-    <Compile Include="Migrations\201710081430512_AddMonthlySiteVisitToCustomer.Designer.cs">
-      <DependentUpon>201710081430512_AddMonthlySiteVisitToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710081436314_UpdateMonthlySiteVisitForCustomer.cs" />
-    <Compile Include="Migrations\201710081436314_UpdateMonthlySiteVisitForCustomer.Designer.cs">
-      <DependentUpon>201710081436314_UpdateMonthlySiteVisitForCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710082140207_AddContactOnSiteToCustomer.cs" />
-    <Compile Include="Migrations\201710082140207_AddContactOnSiteToCustomer.Designer.cs">
-      <DependentUpon>201710082140207_AddContactOnSiteToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710102118103_UpdateInitialNoteInCustomerToNote.cs" />
-    <Compile Include="Migrations\201710102118103_UpdateInitialNoteInCustomerToNote.Designer.cs">
-      <DependentUpon>201710102118103_UpdateInitialNoteInCustomerToNote.cs</DependentUpon>
+    <Compile Include="Migrations\201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.cs" />
+    <Compile Include="Migrations\201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.Designer.cs">
+      <DependentUpon>201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers\AccountType.cs" />
-    <Compile Include="Models\Customers\CustomerNote.cs" />
-    <Compile Include="Models\Customers\MonthlySiteVisit.cs" />
+    <Compile Include="Models\Customers\CustomerServer.cs" />
+    <Compile Include="Models\Customers\SiteInfoNote.cs" />
+    <Compile Include="Models\Customers\SiteInfo.cs" />
     <Compile Include="Models\UserAccounts\AccountViewModels.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="Models\Customers\Customer.cs" />
@@ -353,8 +290,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\HangFireJobs.cs" />
     <Compile Include="Utilities\RoleName.cs" />
-    <Compile Include="ViewModels\CustomerViewModels\CustomerNotesViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModels\SiteInfoViewModel.cs" />
     <Compile Include="ViewModels\ExpenseViewModels\ExpenseFormViewModel.cs" />
     <Compile Include="ViewModels\ExpenseViewModels\ExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseViewModels\MileageFormViewModel.cs" />
@@ -792,8 +729,11 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Customers\CustomerDetails.cshtml" />
-    <Content Include="Views\Customers\_CustomerNote.cshtml" />
     <Content Include="Views\Customers\_CustomerNotes.cshtml" />
+    <Content Include="Views\Customers\Customer.cshtml" />
+    <Content Include="Views\Customers\_CustomerDetails.cshtml" />
+    <Content Include="Views\Customers\_SiteInfo.cshtml" />
+    <Content Include="Views\Customers\_AccountInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -813,62 +753,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709252022080_Initial.resx">
-      <DependentUpon>201709252022080_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710120554052_Initial.resx">
+      <DependentUpon>201710120554052_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709252023562_AddExpenseTypesData.resx">
-      <DependentUpon>201709252023562_AddExpenseTypesData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710120556136_SeedTables.resx">
+      <DependentUpon>201710120556136_SeedTables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709252048559_SeedExpensesTable.resx">
-      <DependentUpon>201709252048559_SeedExpensesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709252103063_SeedExpensesTableMore.resx">
-      <DependentUpon>201709252103063_SeedExpensesTableMore.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709292032403_SeedUsers.resx">
-      <DependentUpon>201709292032403_SeedUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710032138494_AddDateTimeToExpense.resx">
-      <DependentUpon>201710032138494_AddDateTimeToExpense.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710072320450_UpdateCustomerModel.resx">
-      <DependentUpon>201710072320450_UpdateCustomerModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710072351443_AddAccountTypeModel.resx">
-      <DependentUpon>201710072351443_AddAccountTypeModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710072352343_SeedAccountTypes.resx">
-      <DependentUpon>201710072352343_SeedAccountTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710080013448_AddAccountTypeToCustomer.resx">
-      <DependentUpon>201710080013448_AddAccountTypeToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710080020015_AddDateJoinedToCustomer.resx">
-      <DependentUpon>201710080020015_AddDateJoinedToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710080113240_AddCustomerNoteModel.resx">
-      <DependentUpon>201710080113240_AddCustomerNoteModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710080148200_RemoveCustomerFromCustomerNotes.resx">
-      <DependentUpon>201710080148200_RemoveCustomerFromCustomerNotes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710080150281_AddCustomerToCustomerNotes.resx">
-      <DependentUpon>201710080150281_AddCustomerToCustomerNotes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710080154522_UpdateCustomer.resx">
-      <DependentUpon>201710080154522_UpdateCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710081430512_AddMonthlySiteVisitToCustomer.resx">
-      <DependentUpon>201710081430512_AddMonthlySiteVisitToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710081436314_UpdateMonthlySiteVisitForCustomer.resx">
-      <DependentUpon>201710081436314_UpdateMonthlySiteVisitForCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710082140207_AddContactOnSiteToCustomer.resx">
-      <DependentUpon>201710082140207_AddContactOnSiteToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710102118103_UpdateInitialNoteInCustomerToNote.resx">
-      <DependentUpon>201710102118103_UpdateInitialNoteInCustomerToNote.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.resx">
+      <DependentUpon>201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

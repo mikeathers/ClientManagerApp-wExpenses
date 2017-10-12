@@ -22,6 +22,7 @@ namespace DLS_Technologies.Controllers.Api
 
         // DELETE api/expenseforms/1
         [HttpDelete]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public void DeleteExpenseForm(int id)
         {
             var expenseFormInDb = _context.ExpenseForms.SingleOrDefault(e => e.Id == id);
@@ -35,6 +36,7 @@ namespace DLS_Technologies.Controllers.Api
 
         // UPDATE api/expenseforms/1
         [HttpPut]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public void UpdateExpenseFormName(FormDataCollection formData)
         {
             var id = Convert.ToInt32(formData.Get("Id"));
@@ -48,6 +50,7 @@ namespace DLS_Technologies.Controllers.Api
             expenseFormInDb.Name = name;
             _context.SaveChanges();
         }
+
 
 
     }
