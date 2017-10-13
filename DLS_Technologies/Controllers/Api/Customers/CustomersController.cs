@@ -28,12 +28,12 @@ namespace DLS_Technologies.Controllers.Api.Customers
             var note = formData.Get("note");
             var noteType = formData.Get("noteType");
             var custId = Convert.ToInt32(formData.Get("custId"));
-            var type = noteType.Substring(noteType.Length - 4);
+            var type = noteType.Substring(0, noteType.Length - 4);
 
-            var siteNotes = _context.SiteInfoNotes.Where(n => n.CustomerId == custId).ToList() != null ? _context.SiteInfoNotes.Where(n => n.CustomerId == custId).ToList() : null;
-            var servers = _context.CustomerServers.Where(s => s.CustomerId == custId).ToList() != null ? _context.CustomerServers.Where(s => s.CustomerId == custId).ToList() : null;
-
+            var siteNotes = _context.SiteInfoNotes.Where(n => n.CustomerId == custId).ToList();
+            var servers = _context.CustomerServers.Where(s => s.CustomerId == custId).ToList();
             var siteInfo = _context.SiteInfos.Single(s => s.CustomerId == custId);
+
             var siteInfoVm = new SiteInfoViewModel
             {
                 Id = siteInfo.Id,
@@ -50,7 +50,7 @@ namespace DLS_Technologies.Controllers.Api.Customers
                 ModelState.AddModelError(noteType, type + " Info box does not contain any data.");
             }
 
-            switch (noteType)
+            switch (type)
             {
                 case "Network":
                     siteInfo.NetworkInfo = note;
