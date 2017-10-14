@@ -1,5 +1,6 @@
-﻿body {
-    padding-top: 90px;
+﻿.body {
+    margin-top: 100px;
+    margin-left: 0px;
     height: 100%;
 }
 
@@ -283,10 +284,8 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
-    body {
-        padding-top: 170px;
-        padding-bottom: 20px;
-        height: 100%;
+    .body {
+        margin-top:200px;
     }
 
     #custSearchBoxSide {
@@ -349,10 +348,17 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 @media only screen and (min-device-width : 768px) and (max-device-width : 1124px) {
 
     .body {
-        margin-top: 20px;
+        margin-top: 120px;
         height: 100%;
-        margin-left: 50px;
-    }   
+    }  
+    
+    .container {
+        margin-left: 80px;
+    }
+
+    .navbar-collapse.navbar-collapse-1.collapse {
+        width: 600px;
+    }
 
     .remember-me-btn {
         margin-left: 25px;
@@ -364,8 +370,11 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 @media only screen and (min-width : 1124px) and (max-device-width: 1320px) {
     .body {
         margin-top: 20px;
-        margin-left: 50px;
         height: 100%;
+    }
+
+    .container {
+        margin-left:0px;
     }
 
     .logo-link-top {
@@ -380,13 +389,11 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
         margin-bottom: 10px;
     }
 }
-
 @media only screen and (min-width : 1330px) {
-    .body{
-        margin-left:150px;
+    .container {
+        margin-left: 250px;
     }
 }
-
 
 
 
