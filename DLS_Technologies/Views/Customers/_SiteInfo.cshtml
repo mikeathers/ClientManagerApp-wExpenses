@@ -31,7 +31,7 @@
                     <div class="tab-pane fade fade in active" id="network-info" role="tabpanel" aria-labelledby="network-tab">
                         <div class="form-group">
                             <div data-note-type="NetworkInfo" id="cust-note-edit">
-                                @Html.TextAreaFor(m => m.NetworkInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true })
+                                @Html.TextAreaFor(m => m.NetworkInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true, @spellcheck="false" })
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                     <div class="tab-pane fade" id="wifi-info" role="tabpanel" aria-labelledby="wifi-tab">
                         <div class="form-group">
                             <div data-note-type="WifiInfo" id="cust-note-edit">
-                                @Html.TextAreaFor(m => m.WifiInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true })
+                                @Html.TextAreaFor(m => m.WifiInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true, @spellcheck = "false" })
                             </div>
                         </div>
                     </div>
@@ -47,14 +47,14 @@
                     <div class="tab-pane fade" id="domain-info" role="tabpanel" aria-labelledby="domain-tab">
                         <div class="form-group">
                             <div data-note-type="DomainInfo" id="cust-note-edit">
-                                @Html.TextAreaFor(m => m.DomainInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true })
+                                @Html.TextAreaFor(m => m.DomainInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true, @spellcheck = "false" })
                             </div>                            
                         </div>
                     </div>
                     <div class="tab-pane fade" id="server-info" role="tabpanel" aria-labelledby="server-tab">
                         <div class="form-group">
                             <div data-note-type="ServerInfo" id="cust-note-edit">
-                                @Html.TextAreaFor(m => m.DomainInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true })
+                                @Html.TextAreaFor(m => m.DomainInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true, @spellcheck = "false" })
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,12 @@
                 </div>
             </div>
     </div>
-        <div class="col-sm-6">Hello</div>
+        <div class="col-sm-6">
+
+
+
+
+        </div>
 </div>
     
 
@@ -91,7 +96,7 @@
 
             $(".js-edit").on("click", function (e) {
                 e.preventDefault();
-                $(this).parent().prev().find(".active").find("textarea").removeAttr("readonly");
+                $(this).parent().prev().find(".active").find("textarea").removeAttr("readonly").focus();
             });
 
             $(".js-save").on("click", function (e) {

@@ -186,10 +186,10 @@ input.search-box::-webkit-input-placeholder {
     max-width: 100%;
     padding: 10px;
     margin-left: 10px;
-    border:none !important;
     outline:none !important;
     height: 120px !important;
 }
+
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #18BC9C !important;
@@ -387,6 +387,11 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
     }
 }
 
+@media only screen and (min-width : 1550px) {
+    .body {
+        margin-left: 0px;
+    }
+}
 
 
 
