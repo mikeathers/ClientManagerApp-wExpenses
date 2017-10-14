@@ -275,7 +275,6 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 
 
 
-
 /*---------------------------------------------------*/
 /*------------------ Media Queries ------------------*/
 /*---------------------------------------------------*/
@@ -289,6 +288,7 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
         padding-bottom: 20px;
         height: 100%;
     }
+
     #custSearchBoxSide {
         background-color: #18BC9C;
         border: hidden;
@@ -298,26 +298,27 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
         padding: 10px;
         font-size: 20px;
     }
+
     #custSearchBoxShow {
-        visibility:hidden;
+        visibility: hidden;
     }
 
     .logo-link-side {
         width: 168px;
         height: 70px;
         margin: 20px 10px 10px 15px;
-        display:none;
+        display: none;
     }
 
     .logo-link-top {
         width: 168px;
         height: 70px;
         margin: 20px 10px 10px 15px;
-        display:block;
+        display: block;
     }
 
     .navbar-logo {
-        display:none;
+        display: none;
     }
 
     nav.sidebar.navbar {
@@ -345,40 +346,45 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    
-    body {
-        padding-top: 90px;
-        padding-bottom: 20px;
-        padding-left: 40px;
+@media only screen and (min-device-width : 768px) and (max-device-width : 1124px) {
+
+    .body {
+        margin-top: 20px;
         height: 100%;
-    }
+        margin-left: 50px;
+    }   
+
     .remember-me-btn {
         margin-left: 25px;
         margin-bottom: 10px;
     }
 }
+
 /* Desktops and laptops ----------- */
-@media only screen and (min-width : 1124px) {
-    body {
-        padding-top: 80px;
-        padding-bottom: 20px;
-        padding-left: 0px;
+@media only screen and (min-width : 1124px) and (max-device-width: 1320px) {
+    .body {
+        margin-top: 20px;
+        margin-left: 50px;
         height: 100%;
     }
+
     .logo-link-top {
         width: 168px;
         height: 70px;
         margin: 20px 10px 10px 15px;
-        display:none;
+        display: none;
     }
 
     .remember-me-btn {
         margin-left: 150px;
         margin-bottom: 10px;
     }
+}
 
-    
+@media only screen and (min-width : 1330px) {
+    .body{
+        margin-left:150px;
+    }
 }
 
 
@@ -388,11 +394,5 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 
 
 
-
-
-
-
-
-    
 
 

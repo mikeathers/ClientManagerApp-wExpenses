@@ -74,6 +74,10 @@
 
 
     <script>
+        $(".collapse").on('hide.bs.collapse', function () {
+            alert('The collapsible content is about to be hidden.');
+        });
+
 
         var token = $('input[name="__RequestVerificationToken"]').val();
         $.ajaxPrefilter(function (options, originalOptions) {
