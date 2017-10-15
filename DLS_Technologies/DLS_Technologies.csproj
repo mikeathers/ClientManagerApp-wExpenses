@@ -665,6 +665,7 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <None Include="Scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="Scripts\FormScripts\customer-notes.js" />
+    <Content Include="Scripts\FormScripts\search-box.js" />
     <Content Include="Scripts\GoogleMapsAPI\GoogleMapsAPI.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />

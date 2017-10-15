@@ -61,21 +61,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="siteinfo-tab-btns">
+                <div class="siteinfo-btns">
                     <button id="edit-tab-btn" class="btn btn-link">Edit</button>
                     <button id="save-tab-btn" data-customer-id="@Model.CustomerId" class="btn btn-link">Save</button>
                 </div>
             </row>
             <row>
-                <div class="form-group col-sm-12 siteinfo-notes-div">
+                <div class="form-group siteinfo-notes-div">
                     @Html.LabelFor(m => m.NoteTitle)
                     @Html.TextBoxFor(m => m.NoteTitle, new { @class = "form-control", @placeholder = "Enter new title...", @readonly = true })
                     <br />
                     @Html.LabelFor(m => m.NoteContent)
                     @Html.TextAreaFor(m => m.NoteContent, new { @class = "form-control siteinfo-notes", @placeholder = "Enter new note then press Save...", @readonly = true })
-                    
-                    <div>
-                        <div id="note-warning" class="note-validation-failed"></div>
+                    <div id="note-warning" hidden="hidden" class="note-validation-failed"></div>
+                    <div class="">                        
                         <div class="siteinfo-delete-note-btn">
                             <button id="delete-note-btn" data-customer-id="@Model.CustomerId" class="btn btn-link">Delete</button>
                             <button id="addnew-note-btn" data-customer-id="@Model.CustomerId" class="btn btn-link">Add New</button>
@@ -127,6 +126,8 @@
     $(document).ready(function () {
 
         LoadSiteInfoNotesTable();
+
+        $("#network-tab").parent().addClass("active");
 
         $("#edit-tab-btn").on("click", function (e) {
             e.preventDefault();

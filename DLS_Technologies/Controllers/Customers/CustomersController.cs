@@ -109,7 +109,6 @@ namespace DLS_Technologies.Controllers.Customers
             return Json(new { note = note, title = title }, JsonRequestBehavior.AllowGet) ;
         }
 
-
         [HttpPut]
         [ValidateAntiForgeryToken]
         public ActionResult SaveCustomerNote(int id, string note)
@@ -196,7 +195,12 @@ namespace DLS_Technologies.Controllers.Customers
             }
         }
 
+        public JsonResult AutoComplete(string custName)
+        {
+            elavar customerName = _context.Customers.Where(c => c.Name.StartsWith(custName)).Select(c => c.Name);
 
+            return Json(customerName, JsonRequestBehavior.AllowGet);
+        }
 
         // Partials //
 

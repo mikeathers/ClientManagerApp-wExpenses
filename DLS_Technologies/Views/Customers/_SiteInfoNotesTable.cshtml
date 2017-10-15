@@ -4,7 +4,7 @@
 @{ 
     if (!Model.Notes.Any())
     {
-        <p>Note notes have been added.</p>
+        <p>No notes have been added.</p>
     }
     else
     {
@@ -54,7 +54,9 @@
         var noteId = $("#NoteId").val();        
         GetNote(noteId);
     } else if ($("#siteinfo-notes-table tr").length > 0) {
-            var noteId = $("#siteinfo-notes-table tbody tr td:first").attr("data-note-id");
+        var noteId = $("#siteinfo-notes-table tbody tr td:first").attr("data-note-id");
+        $("#NoteId").val(noteId);
+        console.log(noteId);
             GetNote(noteId);
     } else {
         $("#NoteTitle").val("");

@@ -185,7 +185,6 @@ input.search-box::-webkit-input-placeholder {
 .siteinfo-tab-notes {
     max-width: 100%;
     padding: 10px;
-    margin-left: 10px;
     outline:none !important;
     height: 170px !important;
 }
@@ -198,7 +197,7 @@ input.search-box::-webkit-input-placeholder {
     color: #2C3E50 !important;
 }
 
-.siteinfo-tab-btns {
+.siteinfo-btns {
     text-align: right !important;
     margin-top: -20px;
 }
@@ -210,7 +209,7 @@ input.search-box::-webkit-input-placeholder {
 }
 #delete-note-btn:hover {
     color:#b94a48;
-}
+}           
 
 .siteinfo-note-btns {
     text-align: right !important;
@@ -375,6 +374,8 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
     }
 }
 
+
+
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1124px) {
 
@@ -423,11 +424,11 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 }
 @media only screen and (min-width : 1330px) {
     .container {
-        margin-left: 230px;
+        margin-left: 220px;
     }
 
     .body {
-        margin-top: 100px;
+        margin-top: 80px;
     }
 
     

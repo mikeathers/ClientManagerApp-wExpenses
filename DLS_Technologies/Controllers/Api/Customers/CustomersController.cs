@@ -34,9 +34,7 @@ namespace DLS_Technologies.Controllers.Api.Customers
 
             _context.Customers.Remove(customerInDb);
             _context.SaveChanges();
-        }
-
-        
+        }        
 
         [HttpDelete]
         [System.Web.Mvc.ValidateAntiForgeryToken]
@@ -50,5 +48,7 @@ namespace DLS_Technologies.Controllers.Api.Customers
             _context.SiteInfoNotes.Remove(note);
             _context.SaveChanges();
         }
+
+        
     }
 }

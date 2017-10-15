@@ -8,7 +8,7 @@
             @Html.TextAreaFor(m => m.Note, new { @class = "form-control new-cust-note", @placeholder = "Click Edit to add a note...", @readonly = true })
         </div>
         <br />
-        <div style="text-align:right;">
+        <div class="siteinfo-btns">
             <button id="edit-notes-btn" class="btn btn-link">Edit</button>
             <button id="save-notes-btn" class="btn btn-link" data-customer-id="@Model.Id">Save</button>
         </div>

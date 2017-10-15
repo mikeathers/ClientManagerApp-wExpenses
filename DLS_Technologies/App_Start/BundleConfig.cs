@@ -16,7 +16,8 @@ namespace DLS_Technologies
                         "~/scripts/bootbox.js",
                         "~/Scripts/respond.js",                   
                          "~/content/datatables/datatables.min.js",
-                        "~/scripts/_sidenavbar.js"
+                        "~/scripts/_sidenavbar.js",
+                        "~/scripts/formscripts/search-box.js"
                         ));
 
             // jQuery Validation bundle. 
