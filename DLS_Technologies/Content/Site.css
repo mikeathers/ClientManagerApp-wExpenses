@@ -1,5 +1,6 @@
-﻿body {
-    padding-top: 90px;
+﻿.body {
+    margin-top: 100px;
+    margin-left: 0px;
     height: 100%;
 }
 
@@ -27,7 +28,6 @@ textarea {
     background-color: #fff!important;
     resize: none !important;
 }
-
 
 
 
@@ -187,9 +187,8 @@ input.search-box::-webkit-input-placeholder {
     padding: 10px;
     margin-left: 10px;
     outline:none !important;
-    height: 120px !important;
+    height: 170px !important;
 }
-
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #18BC9C !important;
@@ -203,6 +202,31 @@ input.search-box::-webkit-input-placeholder {
     text-align: right !important;
     margin-top: -20px;
 }
+
+
+
+.siteinfo-delete-note-btn {
+    float: left;
+}
+#delete-note-btn:hover {
+    color:#b94a48;
+}
+
+.siteinfo-note-btns {
+    text-align: right !important;
+}
+
+.siteinfo-notes {
+    max-width: 100%;
+    padding: 10px;
+    outline: none !important;
+    height: 120px !important;
+}
+
+.siteinfo-table-col {
+    margin-left:100px;
+}
+
 
 /*---------------------------------*/
 /* jQuery DataTables */
@@ -271,7 +295,11 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
     border: 1px solid #b94a48 !important;
     border: 1px solid red !important;
 }
+.note-validation-failed {
+    color: red !important;
+    padding: 10px;
 
+}
 
 
 
@@ -283,10 +311,8 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
-    body {
-        padding-top: 170px;
-        padding-bottom: 20px;
-        height: 100%;
+    .body {
+        margin-top:200px;
     }
 
     #custSearchBoxSide {
@@ -300,7 +326,7 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
     }
 
     #custSearchBoxShow {
-        visibility: hidden;
+        display: none;
     }
 
     .logo-link-side {
@@ -343,16 +369,28 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
         outline: none !important;
         height: 170px !important;
     }
+
+    .siteinfo-table-col {
+        margin-left: 0px;
+    }
 }
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1124px) {
 
     .body {
-        margin-top: 20px;
+        margin-top: 120px;
         height: 100%;
-        margin-left: 50px;
-    }   
+    }  
+    
+    .container {
+        margin-left:40px;
+    }
+
+
+    .navbar-collapse.navbar-collapse-1.collapse {
+        width: 90%;
+    }
 
     .remember-me-btn {
         margin-left: 25px;
@@ -363,9 +401,12 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1124px) and (max-device-width: 1320px) {
     .body {
-        margin-top: 20px;
-        margin-left: 50px;
+        margin-top: 50px;
         height: 100%;
+    }
+
+    .container {
+        margin-left:0px;
     }
 
     .logo-link-top {
@@ -380,20 +421,29 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
         margin-bottom: 10px;
     }
 }
-
 @media only screen and (min-width : 1330px) {
-    .body{
-        margin-left:150px;
+    .container {
+        margin-left: 230px;
     }
+
+    .body {
+        margin-top: 100px;
+    }
+
+    
 }
 
 @media only screen and (min-width : 1550px) {
-    .body {
-        margin-left: 0px;
+    .container {
+        margin-left: 300px;
     }
+
+    .body {
+        margin-top: 100px;
+    }
+
+    
 }
-
-
 
 
 
