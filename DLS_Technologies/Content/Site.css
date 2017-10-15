@@ -24,6 +24,13 @@ textarea {
     max-width:280px;
 }
 
+
+.ui-autocomplete {
+    z-index: 10000 !important;
+}
+
+
+
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
     background-color: #fff!important;
     resize: none !important;
@@ -312,6 +319,10 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 
     .body {
         margin-top:200px;
+    }
+
+    .ui-autocomplete {
+        font-size:28px;
     }
 
     #custSearchBoxSide {

@@ -1,29 +1,31 @@
 ﻿
-    $(document).ready(function () {
-        console.log("hello");
-        var custBox = $("#custSearchBoxSide");
 
-        custBox.on("change", function () {
-            console.log("change");
-        })
+$(document).ready(function () {
 
-        $("#custSearchBoxSide").autocomplete({
-            source: function (req, res) {
-                $.ajax({
-                    type: "POST",
-                    url: "/Customers/Autocomplete",
-                    dataType: "json",
-                    data: {
-                        Prefix: req.term
-                    },
-                    success: function (result) {
-                        console.log(result);
-                    }
-                })
-            }
-            
-        })
-        
+    $('#custSearchBoxSide').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "/Customers/AutoComplete",
+                data: {
+                    custName: request.term
+                },
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    response($.map(data, function (item) {
+                        return {
+                            label: item.name,
+                            value: item.id
+                        };
+                    }));
+                }
+            });
+        },
+        minLength: 1, // require at least one character from the user
+        select: function (event, ui) {
+            window.location.href = "/Customers/GetCustomer/" + ui.item.value;
+        }
     })
-
     
+})
+

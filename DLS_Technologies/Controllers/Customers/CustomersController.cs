@@ -197,7 +197,7 @@ namespace DLS_Technologies.Controllers.Customers
 
         public JsonResult AutoComplete(string custName)
         {
-            elavar customerName = _context.Customers.Where(c => c.Name.StartsWith(custName)).Select(c => c.Name);
+            var customerName = _context.Customers.Where(c => c.Name.StartsWith(custName)).Select(c => new { id = c.Id, name = c.Name });
 
             return Json(customerName, JsonRequestBehavior.AllowGet);
         }
