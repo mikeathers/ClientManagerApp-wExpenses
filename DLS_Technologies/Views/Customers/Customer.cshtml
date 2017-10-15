@@ -13,7 +13,8 @@
 <div class="row" style="margin-bottom:10px; margin-left:-15px;">
     <button id="cust-info-btn" class="btn btn-link cust-btns" data-btn-id="1">Customer Info</button>
     <button id="site-info-btn" class="btn btn-link cust-btns" data-btn-id="2">Site Info</button>
-    <button id="account-info-btn" class="btn btn-link cust-btns" data-btn-id="2">Account Info</button>
+    <button id="server-info-btn" class="btn btn-link cust-btns" data-btn-id="3">Servers</button>
+    <button id="account-info-btn" class="btn btn-link cust-btns" data-btn-id="4">Account Info</button>
 </div>
 
 <div id="customer-partial"></div>
@@ -22,6 +23,7 @@
 
 
 @section scripts {
+@Scripts.Render("~/bundles/jqueryval")
     
     <script>
         
@@ -55,6 +57,9 @@
             });
             $("#site-info-btn").on("click", function () {
                 LoadCustomerInfoPartial($("#site-info-btn"));
+            });
+            $("#server-info-btn").on("click", function () {
+                LoadCustomerInfoPartial($("#server-info-btn"));
             });
             $("#account-info-btn").on("click", function () {
                 LoadCustomerInfoPartial($("#account-info-btn"));

@@ -18,7 +18,7 @@ $("#save-notes-btn").on("click", function (e) {
     e.preventDefault();
     $.ajax({
         method: "PUT",
-        url: "/Api/Customers/UpdateCustomerNote/",
+        url: "/Customers/SaveCustomerNote/",
         data: {
             id: $("#save-notes-btn").attr("data-customer-id"),
             note: $("#Note").val()

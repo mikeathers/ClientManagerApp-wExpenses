@@ -25,6 +25,18 @@ namespace DLS_Technologies.ViewModels.CustomerViewModels
 
         public int CustomerId { get; set; }
 
+        public CustomerServer Server { get; set; }
+
+        public int NoteId { get; set; }
+
+        [Display(Name = "Title:")]
+        [Required]
+        public string NoteTitle{ get; set; }
+
+        [Display(Name = "Content:")]
+        [Required]
+        public string NoteContent { get; set; }
+
         public IEnumerable<CustomerServer> Servers { get; set; }
 
         public IEnumerable<SiteInfoNote> Notes { get; set; }
