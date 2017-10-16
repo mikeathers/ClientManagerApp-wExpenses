@@ -543,6 +543,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\_SideNavBar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -592,6 +594,8 @@
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <Content Include="Content\DataTables\Buttons-1.4.2\css\common.scss" />
     <Content Include="Content\DataTables\Buttons-1.4.2\css\mixins.scss" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -688,6 +692,8 @@
     <Content Include="Scripts\React\Tutorial.jsx" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_SideNavBar.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

@@ -322,7 +322,7 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
     }
 
     .ui-autocomplete {
-        font-size:28px;
+        font-size:24px;
     }
 
     #custSearchBoxSide {
@@ -367,6 +367,13 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
         margin-bottom: 10px;
     }
 
+    div.dataTables_wrapper div.dataTables_filter {
+        float:left !important;
+    }
+
+    #customerTable_filter {
+        float:left;
+    }
     /*---------------------------------*/
     /* SiteInfo Elements */
     /*---------------------------------*/

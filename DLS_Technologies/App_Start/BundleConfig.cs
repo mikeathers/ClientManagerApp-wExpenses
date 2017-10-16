@@ -17,7 +17,8 @@ namespace DLS_Technologies
                         "~/Scripts/respond.js",                   
                          "~/content/datatables/datatables.min.js",
                         "~/scripts/_sidenavbar.js",
-                        "~/scripts/formscripts/search-box.js"
+                        "~/scripts/formscripts/search-box.js",
+                        "~/scripts/toastr.js"
                         ));
 
             // jQuery Validation bundle. 
@@ -39,6 +40,7 @@ namespace DLS_Technologies
                       "~/content/DataTables/datatables.min.css",
                       "~/content/font-awesome/css/font-awesome.min.css",
                       "~/content/_sidenavbar.css",
+                      "~/Content/toastr.css",
                       "~/Content/site.css"));
         }
     }

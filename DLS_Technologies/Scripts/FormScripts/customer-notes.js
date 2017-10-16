@@ -12,6 +12,7 @@ $("#edit-notes-btn").on("click", function (e) {
     e.preventDefault();
     $("#Note").removeAttr("readonly");
     $(".new-cust-note").focus();
+    toast
 });
 
 $("#save-notes-btn").on("click", function (e) {
@@ -23,7 +24,8 @@ $("#save-notes-btn").on("click", function (e) {
             id: $("#save-notes-btn").attr("data-customer-id"),
             note: $("#Note").val()
         },
-    }).then(function () {
+    }).then(function () {  
+        toastr.success("Note successfully saved!");
         $.ajax({
             method: "GET",
             url: "/Customers/LoadCustomerNotes/",
@@ -33,6 +35,7 @@ $("#save-notes-btn").on("click", function (e) {
         }).done( function (result) {
                 $("#customer-notes-partial").empty();
                 $("#customer-notes-partial").html(result);
+                
         })
         
     })
