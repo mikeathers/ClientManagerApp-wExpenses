@@ -13,7 +13,7 @@
     {
         @Html.ValidationSummary()
         @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.Id)
+        <input type="hidden" id="Id" name="Id" value="@Model.Id">
 
         <div class="row">
             <div class="form-group col-sm-4">
@@ -78,30 +78,17 @@
         </div>
 
         <br />
-        <button class="btn btn-success">Add Customer</button>
-    }
 
-@section scripts 
-{
-    <script>
-        function siteVisitCheck() {
-            var dropDown = $("#AccountTypeId");
-            if (dropDown.val() == 1) {
-                $(".site-visit-form").show();
-            }
-            else
-                $(".site-visit-form").hide();
+        if (Model.Id != 0)
+        {
+            <button class="btn btn-success">Save Customer</button>
+        }
+        else
+        {
+            <button class="btn btn-success">Add Customer</button>
         }
 
-        $(document).ready(function () {
-            var address = document.getElementById('Address');
-            var searchBox = new google.maps.places.SearchBox(address);
+    }
 
-
-
-
-        })
-
-    </script>
-}
+@Scripts.Render("~/scripts/formscripts/customers/customer-form.js")
 

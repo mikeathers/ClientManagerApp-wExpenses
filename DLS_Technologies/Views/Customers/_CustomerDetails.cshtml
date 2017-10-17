@@ -60,51 +60,14 @@
 
         <div id="customer-notes-partial"></div>        
 }
-<br /><br />
+        <br /><br />
 
-<div>
-    <button class="btn btn-success">Edit Customer</button>
-    <button id="del-customer-btn" class="btn btn-primary" data-customer-id="@Model.Id">Delete Customer</button>
-</div>
-
-
-    <script>
-
-        function loadCustNotes() {
-            $.ajax({
-                method: "GET",
-                url: "/Customers/LoadCustomerNotes/",
-                data: { id: $("#Id").val() }
-            }).done(function (result) {
-                $("#customer-notes-partial").empty();
-                $("#customer-notes-partial").html(result);
-            });
-
-        }
+        <div>
+            @Html.ActionLink("Edit", "Edit", "Customers", new { @id = @Model.Id }, new { @class= "btn btn-success" } )
+            <button id="del-customer-btn" class="btn btn-primary" data-customer-id="@Model.Id">Delete Customer</button>
+        </div>
 
 
-
-
-        $(document).ready(function () {
-            loadCustNotes();
-
-
-            $("#del-customer-btn").on("click", function () {
-                var button = $(this);
-                bootbox.confirm("Are you sure you want to delete this Customer?", (result) => {
-                    if (result) {
-                        $.ajax({
-                            method: "DELETE",
-                            url: "/Api/Customers/DeleteCustomer/" + button.attr("data-customer-id"),
-                            success: () => {
-                                window.location.href = "/Customers/"
-                            }
-                        });
-                    }
-                });
-            })
-        })
-
-    </script>
+@Scripts.Render("~/scripts/formscripts/customers/customer-details.js")
 
    

@@ -550,10 +550,23 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootbox.js" />
-    <Content Include="Scripts\bootbox.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\FormScripts\customers\customer-details.js" />
+    <Content Include="Scripts\FormScripts\customers\customer-form.js" />
+    <Content Include="Scripts\FormScripts\customers\customer-index.js" />
+    <Content Include="Scripts\FormScripts\customers\customer-parent.js" />
+    <Content Include="Scripts\FormScripts\customers\siteinfo-notes-table.js" />
+    <Content Include="Scripts\FormScripts\customers\siteinfo.js" />
+    <Content Include="Scripts\FormScripts\expenses\expense-form.js" />
+    <Content Include="Scripts\FormScripts\expenses\expenseforms-form.js" />
+    <Content Include="Scripts\FormScripts\expenses\expenseforms-index.js" />
+    <Content Include="Scripts\FormScripts\expenses\googlemaps-form.js" />
+    <Content Include="Scripts\FormScripts\expenses\mileage-form.js" />
+    <Content Include="Scripts\FormScripts\expenses\odometer-form.js" />
+    <Content Include="Scripts\jQuery\toastr-options.js" />
+    <Content Include="Scripts\jQuery\bootbox.js" />
+    <Content Include="Scripts\jQuery\bootbox.min.js" />
+    <Content Include="Scripts\jQuery\bootstrap.js" />
+    <Content Include="Scripts\jQuery\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -596,7 +609,7 @@
     <Content Include="Content\DataTables\Buttons-1.4.2\css\mixins.scss" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jQuery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
@@ -673,28 +686,27 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
-    <None Include="Scripts\jquery-1.12.4-vsdoc.js" />
-    <Content Include="Scripts\FormScripts\customer-notes.js" />
-    <Content Include="Scripts\FormScripts\search-box.js" />
-    <Content Include="Scripts\GoogleMapsAPI\GoogleMapsAPI.js" />
-    <Content Include="Scripts\jquery-1.12.4.js" />
-    <Content Include="Scripts\jquery-1.12.4.min.js" />
-    <Content Include="Scripts\jquery-1.12.4.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Scripts\jQuery\jquery-1.12.4-vsdoc.js" />
+    <Content Include="Scripts\FormScripts\customers\customer-notes.js" />
+    <Content Include="Scripts\FormScripts\base\search-box.js" />
+    <Content Include="Scripts\jQuery\jquery-1.12.4.js" />
+    <Content Include="Scripts\jQuery\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jQuery\jquery-1.12.4.min.map" />
+    <None Include="Scripts\jQuery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jQuery\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jQuery\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.min.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jQuery\modernizr-2.6.2.js" />
     <Content Include="Scripts\React\NewExpense.jsx" />
     <Content Include="Scripts\React\Tutorial.jsx" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\toastr.js" />
-    <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Scripts\_SideNavBar.js" />
+    <Content Include="Scripts\jQuery\respond.js" />
+    <Content Include="Scripts\jQuery\respond.min.js" />
+    <Content Include="Scripts\jQuery\toastr.js" />
+    <Content Include="Scripts\jQuery\toastr.min.js" />
+    <Content Include="Scripts\FormScripts\base\side-nav-bar.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -742,18 +754,15 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Customers\_CustomerNotes.cshtml" />
-    <Content Include="Views\Customers\Customer.cshtml" />
+    <Content Include="Views\Customers\CustomerParent.cshtml" />
     <Content Include="Views\Customers\_CustomerDetails.cshtml" />
     <Content Include="Views\Customers\_SiteInfo.cshtml" />
     <Content Include="Views\Customers\_AccountInfo.cshtml" />
     <Content Include="Views\Customers\_SiteInfoNotesTable.cshtml" />
     <Content Include="Views\Customers\_ServerInfo.cshtml" />
-    <Content Include="Views\Expenses\EditExpenseForm.cshtml" />
-    <Content Include="Views\Expenses\EditMileageExpenseForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Customers\SiteInfo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

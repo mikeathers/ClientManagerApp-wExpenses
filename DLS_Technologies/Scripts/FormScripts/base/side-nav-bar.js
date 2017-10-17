@@ -1,4 +1,7 @@
-﻿ function htmlbodyHeightUpdate(){
+﻿
+/*
+
+function htmlbodyHeightUpdate() {
 		var height3 = $( window ).height()
 		var height1 = $('.nav').height()+50
 		height2 = $('.main').height()
@@ -26,3 +29,5 @@
   			htmlbodyHeightUpdate()
 		});
 	});
+
+*/

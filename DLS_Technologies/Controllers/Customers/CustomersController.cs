@@ -50,8 +50,33 @@ namespace DLS_Technologies.Controllers.Customers
         public ActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.Include(c => c.AccountType).Single(c => c.Id == id);
-            return View("Customer", customer);
+            return View("CustomerParent", customer);
 
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.Single(c => c.Id == id);
+            var accountTypes = _context.AccountTypes.ToList();
+
+            var viewModel = new CustomerViewModel
+            {
+                Id = customer.Id,
+                Name = customer.Name,
+                AccountTypeId = customer.AccountTypeId,
+                Address = customer.Address,
+                PostCode = customer.PostCode,
+                ContactInfo = customer.ContactInfo,
+                ContactOnSite = customer.ContactOnSite,
+                EmailAddress = customer.EmailAddress,
+                DateJoined = customer.DateJoined,
+                MonthlySiteVisitDate = customer.MonthlySiteVisitDate,
+                Note = customer.Note,
+                AccountTypes = accountTypes
+            };
+
+
+            return View("CustomerForm", viewModel);
         }
 
         [HttpPost]
@@ -65,37 +90,47 @@ namespace DLS_Technologies.Controllers.Customers
                 DateJoined = DateTime.Now
             };
 
-            if (_context.Customers.Any(c => c.Name == customer.Name))
-            {
-                ModelState.AddModelError("Name", "This customer already exists.");                
-                return View("CustomerForm", viewModel);
-            }
-
-            if (!ModelState.IsValid)
-            {
-                return View("CustomerForm", viewModel);
-            }            
+            if (!ModelState.IsValid) { return View("CustomerForm", viewModel); }            
 
             if(customer.Id == 0)
-            {                
+            {
+                if (_context.Customers.Any(c => c.Name == customer.Name))
+                {
+                    ModelState.AddModelError("Name", "This customer already exists.");
+                    return View("CustomerForm", viewModel);
+                }
+
                 if (customer.AccountTypeId != 1)                
                 {
                     customer.MonthlySiteVisitDate = null;
                 }
 
-                var siteInfo = new SiteInfo
-                {
-                    CustomerId = customer.Id                   
-                };
+                var siteInfo = new SiteInfo { CustomerId = customer.Id };
 
                 _context.SiteInfos.Add(siteInfo);
                 _context.Customers.Add(customer);
-                _context.SaveChanges();              
-                
-                return View("Customer", customer);
+                _context.SaveChanges();
+                return View("CustomerParent", customer);
             }
+            else
+            {
+                var custIndDb = _context.Customers.Single(c => c.Id == customer.Id);
 
-            return View("Customer", customer);
+                custIndDb.Id = customer.Id;
+                custIndDb.Name = customer.Name;
+                custIndDb.AccountTypeId = customer.AccountTypeId;
+                custIndDb.Address = customer.Address;
+                custIndDb.PostCode = customer.PostCode;
+                custIndDb.ContactInfo = customer.ContactInfo;
+                custIndDb.ContactOnSite = customer.ContactOnSite;
+                custIndDb.EmailAddress = customer.EmailAddress;
+                custIndDb.DateJoined = customer.DateJoined;
+                custIndDb.MonthlySiteVisitDate = customer.MonthlySiteVisitDate;
+                custIndDb.Note = customer.Note;
+
+                _context.SaveChanges();
+                return View("CustomerParent", customer);
+            }            
         }
 
         public ActionResult GetNoteContent(int id)
@@ -120,12 +155,10 @@ namespace DLS_Technologies.Controllers.Customers
                 return PartialView("_CustomerDetails", customer);
             }
 
-
             customer.Note = note;
             _context.SaveChanges();
 
             return PartialView("_CustomerDetails", customer);
-
         }
 
 
@@ -162,10 +195,7 @@ namespace DLS_Technologies.Controllers.Customers
                     siteInfo.DomainInfo = note;
                     break;
             }
-
             _context.SaveChanges();
-
-
         }
 
         [HttpPut]
@@ -198,7 +228,6 @@ namespace DLS_Technologies.Controllers.Customers
         public JsonResult AutoComplete(string custName)
         {
             var customerName = _context.Customers.Where(c => c.Name.StartsWith(custName)).Select(c => new { id = c.Id, name = c.Name });
-
             return Json(customerName, JsonRequestBehavior.AllowGet);
         }
 
@@ -275,7 +304,6 @@ namespace DLS_Technologies.Controllers.Customers
                     NoteContent = note.Note,
                     NoteId = note.Id
                 };
-
                 return PartialView("_SiteInfoNotesTable", viewModel);
             }
             
