@@ -236,6 +236,14 @@ input.search-box::-webkit-input-placeholder {
     margin-left:100px;
 }
 
+/*---------------------------------*/
+/* Server Info Elements */
+/*---------------------------------*/
+
+.add-sever-btn {
+    float: right;
+}
+
 
 /*---------------------------------*/
 /* jQuery DataTables */

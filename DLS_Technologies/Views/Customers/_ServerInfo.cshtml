@@ -1,1 +1,52 @@
-﻿
+﻿@model DLS_Technologies.ViewModels.CustomerViewModels.ServerViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()    
+    @Html.HiddenFor(m => m.CustomerId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id">
+
+    <div id="servers-table-partial"></div>
+
+
+    <div class="row">
+        <div class="form-group col-sm-2">
+            @Html.LabelFor(m => m.ServerName)
+            @Html.TextBoxFor(m => m.ServerName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-sm-2">
+            @Html.LabelFor(m => m.PublicIpAddress)
+            @Html.TextBoxFor(m => m.PublicIpAddress, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-sm-2">
+            @Html.LabelFor(m => m.PrivateIpAddress)
+            @Html.TextBoxFor(m => m.PrivateIpAddress, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-sm-2">
+            @Html.LabelFor(m => m.Port)
+            @Html.TextBoxFor(m => m.Port, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-sm-2">
+            @Html.LabelFor(m => m.UserName)
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-sm-2">
+                @Html.LabelFor(m => m.Password)
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })            
+        </div>
+    </div>
+    <div class="row col-sm-2 add-sever-btn" >
+        <div><button id="add-server-btn" class="btn btn-success">Add</button></div>
+    </div>
+
+
+
+}
+
+@Scripts.Render("~/scripts/formscripts/customers/serverinfo.js")

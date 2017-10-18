@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44348</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -291,6 +291,7 @@
     <Compile Include="Utilities\HangFireJobs.cs" />
     <Compile Include="Utilities\RoleName.cs" />
     <Compile Include="ViewModels\CustomerViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModels\ServerViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModels\SiteInfoViewModel.cs" />
     <Compile Include="ViewModels\ExpenseViewModels\ExpenseFormViewModel.cs" />
     <Compile Include="ViewModels\ExpenseViewModels\ExpenseViewModel.cs" />
@@ -554,6 +555,8 @@
     <Content Include="Scripts\FormScripts\customers\customer-form.js" />
     <Content Include="Scripts\FormScripts\customers\customer-index.js" />
     <Content Include="Scripts\FormScripts\customers\customer-parent.js" />
+    <Content Include="Scripts\FormScripts\customers\serverinfo.js" />
+    <Content Include="Scripts\FormScripts\customers\servers-table.js" />
     <Content Include="Scripts\FormScripts\customers\siteinfo-notes-table.js" />
     <Content Include="Scripts\FormScripts\customers\siteinfo.js" />
     <Content Include="Scripts\FormScripts\expenses\expense-form.js" />
@@ -760,6 +763,7 @@
     <Content Include="Views\Customers\_AccountInfo.cshtml" />
     <Content Include="Views\Customers\_SiteInfoNotesTable.cshtml" />
     <Content Include="Views\Customers\_ServerInfo.cshtml" />
+    <Content Include="Views\Customers\_ServersTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

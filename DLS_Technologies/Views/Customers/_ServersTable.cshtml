@@ -1,0 +1,58 @@
+﻿@model DLS_Technologies.ViewModels.CustomerViewModels.ServerViewModel
+
+
+<div class="row">
+    @{
+        if (!Model.Servers.Any())
+        {
+            <h3>No Servers have been added.</h3>
+        }
+        else
+        {
+            <table id="servers-table" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td><b>Server Name</b></td>
+                        <td><b>Public IP</b></td>
+                        <td><b>Private IP</b></td>
+                        <td><b>Port</b></td>
+                        <td><b>Username</b></td>
+                        <td><b>Password</b></td>
+                        <td><b>Web Connect</b></td>
+                        <td><b>Remote Desktop</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var item in Model.Servers)
+                        {
+                            <tr>
+                                
+                                <td id="server-name">@item.ServerName</td>
+                                <td id="public-ip">@item.PublicIpAddress</td>
+                                <td id="private-ip">@item.PrivateIpAddress</td>
+                                <td id="port">@item.Port</td>
+                                <td id="username">@item.UserName</td>
+                                <td id="password">@item.Password</td>
+                                <td><button data-server-id="@Model.Id" class="btn btn-link js-web-connect">Connect</button></td>
+                                <td><button class="btn btn-link">Connect</button></td>
+                                <td><button class="btn btn-link">Edit</button></td>
+                                <td><button class="btn btn-link">Delete</button></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    }
+
+    <button id="mybtn">Go</button>
+
+</div>
+
+
+
+@Scripts.Render("~/scripts/formscripts/customers/servers-table.js")
+

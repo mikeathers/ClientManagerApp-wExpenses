@@ -1,5 +1,10 @@
 ﻿
 
+.sidebar-header {
+    background-color: #18BC9C !important;
+    background-color: #2C3E50 !important;
+}
+
 /* remove outer padding */
 .main .row {
     padding: 0px;
@@ -10,7 +15,7 @@
 
 nav.sidebar.navbar {
     border-radius: 0px;
-    margin-top: 59px;    
+    margin-top: 59px;
 }
 
 nav.sidebar, .main {

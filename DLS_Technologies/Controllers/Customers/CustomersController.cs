@@ -161,7 +161,6 @@ namespace DLS_Technologies.Controllers.Customers
             return PartialView("_CustomerDetails", customer);
         }
 
-
         [HttpPut]
         [ValidateAntiForgeryToken]
         public void SaveSiteInfoTabNote(int id, string note, string noteType)
@@ -179,8 +178,7 @@ namespace DLS_Technologies.Controllers.Customers
                 NetworkInfo = siteInfo.NetworkInfo,
                 WifiInfo = siteInfo.WifiInfo,
                 DomainInfo = siteInfo.DomainInfo,
-                Notes = siteNotes,
-                Servers = servers
+                Notes = siteNotes
             };
 
             switch (parsedType)
@@ -225,6 +223,90 @@ namespace DLS_Technologies.Controllers.Customers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddServer(CustomerServer server)
+        {
+            var servers = _context.CustomerServers.Where(s => s.CustomerId == server.CustomerId);
+
+            var serverViewModel = new ServerViewModel
+            {
+                Servers = servers,
+                CustomerId = server.CustomerId
+            };
+
+            if (server.Id == 0)
+            {               
+                _context.CustomerServers.Add(server);
+                _context.SaveChanges();
+                return View("_ServerInfo", serverViewModel);
+            }
+           
+            var customer = _context.Customers.Single(c => c.Id == server.CustomerId);
+            
+            var serverInDb = _context.CustomerServers.SingleOrDefault(s => s.Id == server.Id);
+
+            serverInDb.ServerName = server.ServerName;
+            serverInDb.PublicIpAddress = server.PublicIpAddress;
+            serverInDb.PrivateIpAddress = server.PrivateIpAddress;
+            serverInDb.Port = server.Port;
+            serverInDb.UserName = server.UserName;
+            serverInDb.Password = server.Password;
+
+            _context.SaveChanges();
+            return View("_ServerInfo", serverViewModel);
+        }
+
+        public ActionResult OpenRdp()
+        {
+            string address = Request.QueryString["address"];
+            Response.ContentType = "application/octet-stream";
+            Response.AppendHeader("Content-Disposition", string.Format("attachment; filename={0}.rdp", address));
+            Response.Output.Write(string.Format(@"
+                screen mode id:i:2
+                session bpp:i:32
+                compression:i:1
+                keyboardhook:i:2
+                displayconnectionbar:i:1
+                disable wallpaper:i:1
+                disable full window drag:i:1
+                allow desktop composition:i:0
+                allow font smoothing:i:0
+                disable menu anims:i:1
+                disable themes:i:0
+                disable cursor setting:i:0
+                bitmapcachepersistenable:i:1
+                full address:s:{0}
+                audiomode:i:0
+                redirectprinters:i:1
+                redirectcomports:i:0
+                redirectsmartcards:i:1
+                redirectclipboard:i:1
+                redirectposdevices:i:0
+                autoreconnection enabled:i:1
+                authentication level:i:2
+                prompt for credentials:i:0
+                negotiate security layer:i:1
+                remoteapplicationmode:i:0
+                alternate shell:s:
+                shell working directory:s:
+                gatewayhostname:s:
+                gatewayusagemethod:i:4
+                gatewaycredentialssource:i:4
+                gatewayprofileusagemethod:i:0
+                promptcredentialonce:i:1
+                drivestoredirect:s:E:;
+                use multimon:i:0
+                audiocapturemode:i:0
+                videoplaybackmode:i:1
+                connection type:i:2
+                redirectdirectx:i:1
+                use redirection server name:i:0", address));
+
+            Response.End();
+            return View();
+        }
+
         public JsonResult AutoComplete(string custName)
         {
             var customerName = _context.Customers.Where(c => c.Name.StartsWith(custName)).Select(c => new { id = c.Id, name = c.Name });
@@ -250,7 +332,7 @@ namespace DLS_Technologies.Controllers.Customers
             var customer = _context.Customers.Include(c => c.AccountType).Single(c => c.Id == custId);
             var siteInfo = _context.SiteInfos.FirstOrDefault(s => s.CustomerId == custId);
             var siteNotes = _context.SiteInfoNotes.Where(n => n.CustomerId == custId).ToList();
-            var servers = _context.CustomerServers.Where(s => s.CustomerId == custId).ToList();
+            var serverList = _context.CustomerServers.Where(s => s.CustomerId == custId).ToList();
             
 
             var siteInfoVm = new SiteInfoViewModel
@@ -261,7 +343,12 @@ namespace DLS_Technologies.Controllers.Customers
                 WifiInfo = siteInfo.WifiInfo,
                 DomainInfo = siteInfo.DomainInfo,
                 Notes = siteNotes,
-                Servers = servers
+            };
+
+            var serverInfoVm = new ServerViewModel
+            {
+                Servers = serverList,
+                CustomerId = custId
             };
 
             switch (btnId)
@@ -271,7 +358,7 @@ namespace DLS_Technologies.Controllers.Customers
                 case 2:
                     return PartialView("_SiteInfo", siteInfoVm);
                 case 3:
-                    return PartialView("_ServerInfo", siteInfoVm);
+                    return PartialView("_ServerInfo", serverInfoVm);
                 case 4:
                     return PartialView("_AccountInfo", customer);
                 default:
@@ -311,6 +398,18 @@ namespace DLS_Technologies.Controllers.Customers
             
             
 
+        }
+
+        public ActionResult LoadServersTable(int id)
+        {
+            var servers = _context.CustomerServers.Where(s => s.CustomerId == id).ToList();
+            var serverViewModel = new ServerViewModel
+            {                
+                Servers = servers,
+                CustomerId = id
+            };
+
+            return PartialView("_ServersTable", serverViewModel);
         }
     }
 }
