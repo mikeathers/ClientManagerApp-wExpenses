@@ -6,7 +6,7 @@
                 "preventDuplicates": true,
                 "showDuration": "300",
                 "hideDuration": "1000",
-                "timeOut": "1500",
+                "timeOut": "900",
                 "extendedTimeOut": "1000",
                 "showEasing": "swing",
                 "hideEasing": "linear",

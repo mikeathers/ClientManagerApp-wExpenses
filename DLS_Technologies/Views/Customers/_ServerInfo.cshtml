@@ -5,10 +5,9 @@
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()    
     @Html.HiddenFor(m => m.CustomerId)
-    <input type="hidden" id="Id" name="Id" value="@Model.Id">
 
     <div id="servers-table-partial"></div>
-
+    <br /><br />
 
     <div class="row">
         <div class="form-group col-sm-2">
@@ -41,8 +40,14 @@
                 @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })            
         </div>
     </div>
-    <div class="row col-sm-2 add-sever-btn" >
-        <div><button id="add-server-btn" class="btn btn-success">Add</button></div>
+
+    <div id="add-btn" class="row col-sm-2 sever-btn-div" >
+        <button id="add-server-btn" class="btn btn-success">Add</button>
+    </div>
+
+    <div id="edit-btns" hidden="hidden" class="row col-sm-2 sever-btn-div">
+        <button id="delete-server-btn" class="btn btn-primary">Delete</button>
+       <button id="save-server-btn" class="btn btn-success">Save</button>
     </div>
 
 

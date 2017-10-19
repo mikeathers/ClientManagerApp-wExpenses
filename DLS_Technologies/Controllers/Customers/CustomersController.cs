@@ -225,7 +225,7 @@ namespace DLS_Technologies.Controllers.Customers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddServer(CustomerServer server)
+        public ActionResult SaveServer(CustomerServer server)
         {
             var servers = _context.CustomerServers.Where(s => s.CustomerId == server.CustomerId);
 
@@ -255,7 +255,7 @@ namespace DLS_Technologies.Controllers.Customers
 
             _context.SaveChanges();
             return View("_ServerInfo", serverViewModel);
-        }
+        }        
 
         public ActionResult OpenRdp()
         {

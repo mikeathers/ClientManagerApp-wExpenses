@@ -1,11 +1,12 @@
 ﻿@model DLS_Technologies.ViewModels.CustomerViewModels.ServerViewModel
 
+<input type="hidden" id="ServerId" name="ServerId" value="0">
 
-<div class="row">
+<div class="row servers-table">
     @{
         if (!Model.Servers.Any())
         {
-            <h3>No Servers have been added.</h3>
+            <div class="col-sm-8"> <h3>No Servers have been added.</h3></div>
         }
         else
         {
@@ -21,7 +22,6 @@
                         <td><b>Web Connect</b></td>
                         <td><b>Remote Desktop</b></td>
                         <td></td>
-                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,10 +36,9 @@
                                 <td id="port">@item.Port</td>
                                 <td id="username">@item.UserName</td>
                                 <td id="password">@item.Password</td>
-                                <td><button data-server-id="@Model.Id" class="btn btn-link js-web-connect">Connect</button></td>
-                                <td><button class="btn btn-link">Connect</button></td>
-                                <td><button class="btn btn-link">Edit</button></td>
-                                <td><button class="btn btn-link">Delete</button></td>
+                                <td><button class="btn btn-link js-web-connect">Connect</button></td>
+                                <td><button class="btn btn-link js-rdp-connect">Connect</button></td>
+                                <td><button data-server-id="@item.Id" class="btn btn-link js-edit-btn">Edit</button></td>
                             </tr>
                         }
                     }
@@ -48,7 +47,6 @@
         }
     }
 
-    <button id="mybtn">Go</button>
 
 </div>
 

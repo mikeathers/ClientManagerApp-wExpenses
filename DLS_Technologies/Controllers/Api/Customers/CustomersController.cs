@@ -49,6 +49,19 @@ namespace DLS_Technologies.Controllers.Api.Customers
             _context.SaveChanges();
         }
 
-        
+        [HttpDelete]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        public void DeleteServer(int id)
+        {
+            var server = _context.CustomerServers.FirstOrDefault(s => s.Id == id);
+
+            if(server == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            _context.CustomerServers.Remove(server);
+            _context.SaveChanges();
+        }
+
+
     }
 }

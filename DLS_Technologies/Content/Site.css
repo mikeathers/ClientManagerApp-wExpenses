@@ -240,10 +240,18 @@ input.search-box::-webkit-input-placeholder {
 /* Server Info Elements */
 /*---------------------------------*/
 
-.add-sever-btn {
+.sever-btn-div {
     float: right;
+    text-align:right;
 }
 
+.servers-table {
+}
+
+    #servers-table > tbody > tr > td {
+       vertical-align: initial !important;
+       text-align: center;
+    }
 
 /*---------------------------------*/
 /* jQuery DataTables */
@@ -329,7 +337,7 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
     .body {
-        margin-top:200px;
+        margin-top:160px;
     }
 
     .ui-autocomplete {
@@ -379,9 +387,8 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
     }
 
     
-
-    #customerTable_filter {
-        float:left;
+    .dataTables_filter {
+        float: left !important;
     }
 
     .toast-top-right{
@@ -403,6 +410,8 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
     .siteinfo-table-col {
         margin-left: 0px;
     }
+
+    
 }
 
 
