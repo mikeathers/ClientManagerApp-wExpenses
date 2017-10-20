@@ -35,10 +35,7 @@ namespace DLS_Technologies.ViewModels.CustomerViewModels
         [Required]
         [Display(Name = "Password:")]
         public string Password { get; set; }
-
-        [Display(Name = "Domain:")]
-        public string Domain { get; set; }
-
+        
         public Customer Customer { get; set; }
 
         public int CustomerId { get; set; }
