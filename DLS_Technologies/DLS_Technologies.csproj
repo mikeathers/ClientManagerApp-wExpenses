@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.Designer.cs">
       <DependentUpon>201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710202123030_AddDomainToCustServers.cs" />
+    <Compile Include="Migrations\201710202123030_AddDomainToCustServers.Designer.cs">
+      <DependentUpon>201710202123030_AddDomainToCustServers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers\AccountType.cs" />
     <Compile Include="Models\Customers\CustomerServer.cs" />
@@ -791,6 +795,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.resx">
       <DependentUpon>201710120625043_UpdateSiteInfoChangeNoteToInfoOnProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710202123030_AddDomainToCustServers.resx">
+      <DependentUpon>201710202123030_AddDomainToCustServers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

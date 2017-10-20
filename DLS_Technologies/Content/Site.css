@@ -2,6 +2,7 @@
     margin-top: 100px;
     margin-left: 0px;
     height: 100%;
+    min-height: 100vh !important;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -71,17 +72,17 @@ hr {
 
 .body {
     flex: 1;
-    min-height: 100vh !important;
-
-
+    margin-bottom: -100px;
 }
+
+
+
 .footer {
     left: 0;
     bottom: 0;
     height:30px !important;
     width: 100%;
     text-align: center;
-    margin-bottom:30px;
 }
 
 
@@ -98,6 +99,8 @@ hr {
 .navbar-default-top {
     z-index: 1000000;
 }
+
+
 
 #custSearchBox {
     background-color: #2C3E50;
@@ -167,11 +170,13 @@ input.search-box::-webkit-input-placeholder {
 
 .new-cust-note {
     max-width: 100%;
+    height:170px !important;
 }
-.new-cust-note-view {
+.new-cust-note-edit{
     max-width: 100%;
     padding:10px;
     margin-left:10px;
+    height:300px;
 }
 
 
@@ -185,6 +190,10 @@ input.search-box::-webkit-input-placeholder {
 }
 #show-new-note-btn {
     text-align: right !important;
+}
+
+.cust-details-btns {
+    margin-top:-50px;
 }
 
 
@@ -229,11 +238,18 @@ input.search-box::-webkit-input-placeholder {
     max-width: 100%;
     padding: 10px;
     outline: none !important;
-    height: 120px !important;
+    height: 170px !important;
 }
 
 .siteinfo-table-col {
     margin-left:100px;
+    
+}
+
+#SiteInfoNotesTable {
+    max-height: 500px;
+    overflow:auto;
+    overflow-x:hidden;
 }
 
 /*---------------------------------*/
@@ -241,10 +257,12 @@ input.search-box::-webkit-input-placeholder {
 /*---------------------------------*/
 
 .sever-btn-div {
-    float: right;
     text-align:right;
+    float: right;
 }
+#add-server-btn {
 
+}
 .servers-table {
 }
 
@@ -336,8 +354,10 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
+    
     .body {
-        margin-top:160px;
+        margin-top: 180px;
+        margin-bottom: 0px;
     }
 
     .ui-autocomplete {

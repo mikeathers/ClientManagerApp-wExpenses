@@ -17,7 +17,7 @@
                         <td><b>Public IP</b></td>
                         <td><b>Private IP</b></td>
                         <td><b>Port</b></td>
-                        <td><b>Username</b></td>
+                        <td><b>Domain\Username</b></td>
                         <td><b>Password</b></td>
                         <td><b>Web Connect</b></td>
                         <td><b>Remote Desktop</b></td>
@@ -30,14 +30,14 @@
                         {
                             <tr>
                                 
-                                <td id="server-name">@item.ServerName</td>
+                                <td id="server-name"><b>@item.ServerName</b></td>
                                 <td id="public-ip">@item.PublicIpAddress</td>
                                 <td id="private-ip">@item.PrivateIpAddress</td>
                                 <td id="port">@item.Port</td>
                                 <td id="username">@item.UserName</td>
                                 <td id="password">@item.Password</td>
-                                <td><button class="btn btn-link js-web-connect">Connect</button></td>
-                                <td><button class="btn btn-link js-rdp-connect">Connect</button></td>
+                                <td><button class="btn btn-link js-web-connect"><b>Connect</b></button></td>
+                                <td><button class="btn btn-link js-rdp-connect"><b>Connect</b></button></td>
                                 <td><button data-server-id="@item.Id" class="btn btn-link js-edit-btn">Edit</button></td>
                             </tr>
                         }

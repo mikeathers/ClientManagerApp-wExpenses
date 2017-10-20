@@ -29,12 +29,15 @@ namespace DLS_Technologies.ViewModels.CustomerViewModels
         public string Port { get; set; }
 
         [Required]
-        [Display(Name = "Username:")]
+        [Display(Name = "Domain\\Username:")]
         public string UserName { get; set; }
 
         [Required]
         [Display(Name = "Password:")]
         public string Password { get; set; }
+
+        [Display(Name = "Domain:")]
+        public string Domain { get; set; }
 
         public Customer Customer { get; set; }
 

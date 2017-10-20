@@ -39,16 +39,18 @@
                 @Html.LabelFor(m => m.Password)
                 @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })            
         </div>
+        
     </div>
 
-    <div id="add-btn" class="row col-sm-2 sever-btn-div" >
+    <div id="add-btn" class="row col-sm-2 sever-btn-div">
         <button id="add-server-btn" class="btn btn-success">Add</button>
     </div>
+        <div id="edit-btns" hidden="hidden" class="row col-sm-2 sever-btn-div">
+            <button id="delete-server-btn" class="btn btn-primary">Delete</button>
+            <button id="save-server-btn" class="btn btn-success">Save</button>
+        </div>
 
-    <div id="edit-btns" hidden="hidden" class="row col-sm-2 sever-btn-div">
-        <button id="delete-server-btn" class="btn btn-primary">Delete</button>
-       <button id="save-server-btn" class="btn btn-success">Save</button>
-    </div>
+
 
 
 

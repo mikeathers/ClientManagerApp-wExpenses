@@ -11,4 +11,4 @@ function siteVisitCheck() {
     $(document).ready(function () {
         var address = document.getElementById('Address');
         var searchBox = new google.maps.places.SearchBox(address);
-    })
+    }); 

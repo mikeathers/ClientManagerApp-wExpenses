@@ -28,6 +28,27 @@ var token = $('input[name="__RequestVerificationToken"]').val();
                 }
             });
         }
+
+        function SaveServer() {
+            $.ajax({
+                method: "POST",
+                url: "/Customers/SaveServer/",
+                data: {
+                    Id: $("#ServerId").val(),
+                    serverName: $("#ServerName").val(),
+                    publicIpAddress: $("#PublicIpAddress").val(),
+                    privateIpAddress: $("#PrivateIpAddress").val(),
+                    port: $("#Port").val(),
+                    userName: $("#UserName").val(),
+                    password: $("#Password").val(),
+                    customerId: $("#CustomerId").val()
+                },
+                success: function () {
+                    LoadServersTable();
+                    toastr.success("Server saved!", "Success");
+                }
+            })
+        }
         
 
         $(document).ready(function () {
@@ -35,45 +56,12 @@ var token = $('input[name="__RequestVerificationToken"]').val();
 
             $("#add-server-btn").on("click", function (e) {
                 e.preventDefault();
-                $.ajax({
-                    method: "POST",
-                    url: "/Customers/SaveServer/", 
-                    data: {
-                        serverName: $("#ServerName").val(),
-                        publicIpAddress: $("#PublicIpAddress").val(),
-                        privateIpAddress: $("#PrivateIpAddress").val(),
-                        port: $("#Port").val(),
-                        userName: $("#UserName").val(),
-                        password: $("#Password").val(),
-                        customerId: $("#CustomerId").val()
-                    },
-                    success: function () {                        
-                        LoadServersTable();
-                        toastr.success("Server added!", "Success");
-                    }
-                })
+                SaveServer()
             });
 
             $("#save-server-btn").on("click", function (e) {
                 e.preventDefault();
-                $.ajax({
-                    method: "POST",
-                    url: "/Customers/SaveServer/",
-                    data: {
-                        Id: $("#ServerId").val(),
-                        serverName: $("#ServerName").val(),
-                        publicIpAddress: $("#PublicIpAddress").val(),
-                        privateIpAddress: $("#PrivateIpAddress").val(),
-                        port: $("#Port").val(),
-                        userName: $("#UserName").val(),
-                        password: $("#Password").val(),
-                        customerId: $("#CustomerId").val()
-                    },
-                    success: function () {
-                        LoadServersTable();
-                        toastr.success("Server updated!", "Success");
-                    }
-                });
+                SaveServer();
             });
 
             $("#delete-server-btn").on("click", function (e) {
