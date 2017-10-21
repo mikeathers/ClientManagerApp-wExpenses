@@ -43,6 +43,7 @@ $(document).ready(function () {
         var encodedPassword = encodeURI(server.password);
 
         var url = `https://192.168.0.8/Myrtille/?__EVENTTARGET=&__EVENTARGUMENT=&server=${encodedServer}&user=${encodedUsername}&password=${encodedPassword}&program=&connect=Connect%21`;
+        console.log(url);
         window.open(url, "_blank");
 
     }).on("click", ".js-rdp-connect", function (e) {

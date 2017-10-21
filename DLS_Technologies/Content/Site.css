@@ -238,11 +238,11 @@ input.search-box::-webkit-input-placeholder {
     max-width: 100%;
     padding: 10px;
     outline: none !important;
-    height: 170px !important;
+    height: 230px !important;
 }
 
 .siteinfo-table-col {
-    margin-left:100px;
+    margin-left:80px;
     
 }
 

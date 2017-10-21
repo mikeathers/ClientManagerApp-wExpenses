@@ -7,11 +7,7 @@
     <input type="hidden" id="Id" name="Id" value="@Model.Id">
     @Html.HiddenFor(m => m.CustomerId)
     @Html.HiddenFor(m => m.NoteId)
-
-    <div class="row">
-        <div class="col-sm-8"></div>
-        <div class="row"></div>
-    </div>
+       
 
     <div class="row">
         <div class="col-sm-8">
@@ -27,9 +23,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="domain-tab" data-tab-id="3" data-toggle="tab" href="#domain-info" role="tab" aria-controls="domain-info">Domain Details</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="other-tab" data-tab-id="3" data-toggle="tab" href="#other-info" role="tab" aria-controls="other-info">Other Details</a>
-                    </li>
+                   <!--<li class="nav-item">
+                        <a class="nav-link" id="other-tab" data-tab-id="4" data-toggle="tab" href="#other-info" role="tab" aria-controls="other-info">Other Details</a>
+                    </li>--> 
                 </ul>
                 <div class="tab-content" id="siteinfo-tab-content">
 
@@ -56,13 +52,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="other-info" role="tabpanel" aria-labelledby="other-tab">
+                   <!--<div class="tab-pane fade" id="other-info" role="tabpanel" aria-labelledby="other-tab">
                         <div class="form-group">
                             <div data-note-type="OtherInfo" id="cust-note-edit">
                                 @Html.TextAreaFor(m => m.DomainInfo, new { @class = "form-control siteinfo-tab-notes", @placeholder = "Click Edit to add a note...", @readonly = true, @spellcheck = false })
                             </div>
                         </div>
-                    </div>
+                    </div>--> 
                 </div>
                 <div class="siteinfo-btns">
                     <button id="edit-tab-btn" class="btn btn-link">Edit</button>
@@ -91,7 +87,7 @@
             </div>
         </div>
         
-        <div class="col-sm-2 siteinfo-table-col">
+        <div class="col-sm-3 siteinfo-table-col">
             <h4>Site Notes:</h4>
 
             <div id="SiteInfoNotesTable"></div>
