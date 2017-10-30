@@ -72,17 +72,16 @@ hr {
 
 .body {
     flex: 1;
-    margin-bottom: -100px;
 }
 
 
 
 .footer {
-    left: 0;
-    bottom: 0;
-    height:30px !important;
     width: 100%;
     text-align: center;
+    bottom:0;
+    top: 0;
+    margin-bottom: 20px;
 }
 
 
@@ -101,6 +100,10 @@ hr {
 }
 
 
+.remember-me-btn {
+    margin-left: 20%;
+    margin-bottom: 10px;
+}
 
 #custSearchBox {
     background-color: #2C3E50;
@@ -176,7 +179,7 @@ input.search-box::-webkit-input-placeholder {
     max-width: 100%;
     padding:10px;
     margin-left:10px;
-    height:300px;
+    min-height:300px;
 }
 
 
@@ -485,7 +488,7 @@ input.input-validation-error, textarea.input-validation-error, select.input-vali
 @media only screen and (min-width : 1330px) {
     .container {
         margin-left: 220px;
-    }
+    }       
 
     .body {
         margin-top: 80px;

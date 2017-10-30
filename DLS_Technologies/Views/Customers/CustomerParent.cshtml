@@ -1,6 +1,6 @@
 ﻿@model DLS_Technologies.Models.Customer
 @{
-    ViewBag.Title = "New Customer";
+    ViewBag.Title = Model.Id != 0 ? Model.Name : "New Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

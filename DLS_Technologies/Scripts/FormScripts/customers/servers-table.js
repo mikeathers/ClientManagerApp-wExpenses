@@ -42,7 +42,7 @@ $(document).ready(function () {
         var encodedUsername = encodeURI(server.userName);
         var encodedPassword = encodeURI(server.password);
 
-        var url = `https://192.168.0.8/Myrtille/?__EVENTTARGET=&__EVENTARGUMENT=&server=${encodedServer}&user=${encodedUsername}&password=${encodedPassword}&program=&connect=Connect%21`;
+        var url = `https://192.168.0.23/Myrtille/?__EVENTTARGET=&__EVENTARGUMENT=&server=${encodedServer}&user=${encodedUsername}&password=${encodedPassword}&program=&connect=Connect%21`;
         console.log(url);
         window.open(url, "_blank");
 

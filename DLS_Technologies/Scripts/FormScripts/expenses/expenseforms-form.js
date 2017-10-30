@@ -2,7 +2,7 @@
  $(document).ready(function () {
             
             $("#expensesTable").append('<tfoot><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tfoot>');
-            $('#expensesTable').DataTable({
+            var table = $('#expensesTable').DataTable({
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],                
                 order: [[2, "desc"]],
                 columnDefs: [
@@ -99,6 +99,8 @@
                     );                    
                 }
             });       
+
+            //table.page("last").draw("page");
             
             $("#expensesTable tbody").on("click", "tr", function () {
                 var row = $(this);
